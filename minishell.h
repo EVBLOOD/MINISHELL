@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 14:11:09 by sakllam           #+#    #+#             */
-/*   Updated: 2022/03/01 15:17:25 by sakllam          ###   ########.fr       */
+/*   Updated: 2022/03/06 19:13:18 by sakllam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,8 @@
 #include <readline/history.h>
 
 #define PIPE		0
-#define DQOPEN		1
-#define DQCLOSE		2
-#define SQOPEN		3
-#define SQCLOSE		4
+#define DQ			1
+#define SQ			3
 #define WORD		5
 #define RDIN		6
 #define RDOUT		7
@@ -35,6 +33,13 @@
 #define PRTCLOSE	14
 #define WILD		15
 
+typedef	struct s_cmd
+{
+	char	*path;
+	char	*all;
+}	t_cmd;
+
+
 typedef struct s_list
 {
 	char			*splited;
@@ -42,46 +47,20 @@ typedef struct s_list
 	struct s_list	*next;
 }	t_list;
 
+typedef struct s_tree
+{
+	char	**element;
+	int		type;
+	struct s_tree	*left;
+	struct s_tree	*right;
+}	t_tree;
 
-// typedef struct s_commands
-// {
-// 	char				**cmd;
-// 	char				*pathcmd;
-// 	int					echo;
-// 	int					echo;
-// 	int					cd;
-// 	int					pwd;
-// 	int					export;
-// 	int					unset;
-// 	int					env;
-// 	int					exit;
-// 	int					redirections;
-// 	int					dquote;
-// 	int					squote;
-// 	struct s_commands	*next;
-// }	t_commands;
-
-// typedef struct s_commands1
-// {
-// 	char				**cmd;
-// 	char				*pathcmd;
-// 	int					the_first;
-// 	struct s_commands1	*next;
-// }	t_commands1;
-
-// typedef struct s_all_data
-// {
-// 	int	fd_file1;
-// 	int	fd_file2;
-// 	int	fork_respo;
-// 	int	whileforks_respo;
-// 	int	never_goin;
-// 	int	pipe_respo;
-// 	int	pipe_fds[2];
-// 	int	count;
-//}	t_all_data;
-t_list	*ft_parsing(char *line);
+t_list	*ft_lexicalanalysis(char *line);
 void	ft_lstadd_front(t_list **lst, t_list *new);
 void	ft_lstadd_back(t_list **lst, t_list *new);
 t_list	*ft_lstlast(t_list *lst);
+int	ft_syntaxanalysis(t_list *parsresult);
+int	ft_strlen(const char *s);
+t_tree	*ft_abs(t_list **parsresult, t_list *end);
+int	ft_execution(t_tree *tree, int n);
 #endif
