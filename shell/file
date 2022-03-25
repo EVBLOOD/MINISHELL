@@ -1,0 +1,20 @@
+total 160
+drwxr-xr-x  19 sakllam  candidate    646 Mar 24 22:52 .
+drwx------  23 sakllam  candidate    782 Mar 24 14:03 ..
+-rw-r--r--   1 sakllam  candidate    104 Mar 24 22:52 ...
+-rwxr-xr-x   1 sakllam  candidate  34848 Mar 24 20:15 a.out
+drwxr-xr-x   7 sakllam  candidate    238 Mar 22 22:03 execution
+-rw-r--r--   1 sakllam  candidate     81 Mar 24 20:23 fiile
+-rw-r--r--   1 sakllam  candidate      0 Mar 25 04:31 file
+-rw-r--r--   1 sakllam  candidate   2092 Mar 24 15:01 file1
+-rw-r--r--   1 sakllam  candidate    799 Mar 24 15:03 file2
+-rw-r--r--   1 sakllam  candidate    134 Mar 24 15:03 file3
+-rw-r--r--   1 sakllam  candidate      0 Mar 24 18:48 lop
+-rw-r--r--   1 sakllam  candidate   2292 Mar 23 19:13 main.c
+-rw-r--r--   1 sakllam  candidate   3393 Mar 24 16:08 mini_shell.h
+drwxr-xr-x   9 sakllam  candidate    306 Mar 25 02:42 parsing
+-rw-r--r--   1 sakllam  candidate     51 Mar 24 15:30 seg
+-rw-r--r--   1 sakllam  candidate    104 Mar 24 22:52 tes3
+-rw-r--r--   1 sakllam  candidate      6 Mar 24 22:50 test1
+-rw-r--r--   1 sakllam  candidate      0 Mar 24 22:49 test2
+-rw-r--r--   1 sakllam  candidate     99 Mar 24 22:49 test3

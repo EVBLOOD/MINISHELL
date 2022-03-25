@@ -1,0 +1,23 @@
+total 1928
+-rw-r--r--   1 sakllam  candidate       0 Mar  3 18:30 $
+drwxr-xr-x   2 sakllam  candidate      68 Mar  6 21:01 1
+-rw-r--r--   1 sakllam  candidate       0 Mar  3 18:47 14462$
+-rwxr-xr-x   1 sakllam  candidate   19696 Mar 12 21:04 a.out
+-rw-r--r--   1 sakllam  candidate       4 Mar 12 17:57 cd
+-rw-r--r--   1 sakllam  candidate       0 Mar 12 17:56 cd0
+drwxr-xr-x  13 sakllam  candidate     442 Mar 12 09:12 exec
+-rw-r--r--   1 sakllam  candidate       0 Mar 12 21:13 file
+-rw-r--r--   1 sakllam  candidate     117 Mar 12 20:42 h
+-rw-r--r--   1 sakllam  candidate      91 Mar 11 20:58 kl
+-rw-r--r--   1 sakllam  candidate    1173 Mar 11 21:02 kp
+-rw-r--r--   1 sakllam  candidate       0 Mar  3 18:22 ks df
+-rw-r--r--   1 sakllam  candidate      10 Mar 12 16:05 lj0
+-rw-r--r--   1 sakllam  candidate     218 Mar 12 20:48 ls
+-rw-r--r--   1 sakllam  candidate       0 Mar 12 17:56 ls0
+-rw-r--r--   1 sakllam  candidate    2112 Mar 12 20:54 main.c
+-rw-r--r--   1 sakllam  candidate    2732 Mar 12 10:56 minishell.h
+-rw-r--r--   1 sakllam  candidate  924448 Mar  2 22:41 minishell.h.gch
+-rw-r--r--   1 sakllam  candidate      10 Mar 12 14:27 ok
+drwxr-xr-x   8 sakllam  candidate     272 Mar 12 09:12 parsing
+-rw-r--r--   1 sakllam  candidate      84 Mar  4 22:23 sls
+-rw-r--r--   1 sakllam  candidate       0 Mar  7 13:43 test
