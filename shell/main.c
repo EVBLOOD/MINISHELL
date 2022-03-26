@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 23:58:50 by sakllam           #+#    #+#             */
-/*   Updated: 2022/03/23 19:13:01 by sakllam          ###   ########.fr       */
+/*   Updated: 2022/03/26 17:00:25 by sakllam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ int	main(int argc, char *argv[], char *env[])
 		{
 			add_history(line);
 			tree = ft_parsing(line);
+		// affich(tree, "root", 0);
 			ft_execution(newenv, tree, 'p', args);
 		}
 		// if (tree)
@@ -86,7 +87,6 @@ int	main(int argc, char *argv[], char *env[])
 		// 			i++;
 		// 		}
 		// 	}
-		//affich(tree, "root", 0);
 		// }
 	}
 }

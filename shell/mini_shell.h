@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 23:36:27 by sakllam           #+#    #+#             */
-/*   Updated: 2022/03/24 16:08:07 by sakllam          ###   ########.fr       */
+/*   Updated: 2022/03/26 21:34:05 by sakllam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,14 @@
 #define WILD		13
 #define SPACES		14
 #define LIST		15
+#define RDARG		16
 
 typedef struct s_list
 {
 	char			*splited;
 	int				nb;
 	int				TYPE;
+	int				fd;
 	struct s_list	*next;
 }	t_list;
 
@@ -89,7 +91,7 @@ int		ft_strlen(const char *s);
 int		ft_isdigit(int c);
 int	 	ft_isalpha(int c);
 int		ft_varvalidating(int c);
-char	**ft_dealwithlist(t_list **list, char **env);
+char	**ft_dealwithlist(t_list **list, char **env, int i);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	**ft_split(char const *s, char c);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
@@ -110,4 +112,6 @@ void ft_free(char **element);
 void disp(t_list **list);
 int	ft_RDRfunction(char position, t_tree *tree, char **env, int Ptype, int fd);
 int	ft_PIPEfunction(char position, t_tree *tree, char **env, int lastpipe, int pip[2]);
+t_list	*ft_redirectionsset(t_list *lst);
+char	**ft_simplewild(void);
 #endif

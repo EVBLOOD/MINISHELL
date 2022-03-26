@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 13:55:00 by sakllam           #+#    #+#             */
-/*   Updated: 2022/03/23 14:11:38 by sakllam          ###   ########.fr       */
+/*   Updated: 2022/03/26 21:40:36 by sakllam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -192,7 +192,30 @@ int	ft_spacevar(t_list *element)
 	return (1);
 }
 
-char	**ft_dealwithlist(t_list **list, char **env)
+int	ft_countwildexpantion(void)
+{
+	char	**files;
+	int		i;
+
+	i = 0;
+	files = ft_simplewild();
+	while (files[i])
+	{
+		free(files[i]);
+		i++;
+	}
+	free(files);
+	return (i);
+}
+
+void	ft_expandsimplewild(t_list *list, char **env)
+{
+	char	**files;
+
+	files = ft_simplewild();
+}
+
+char	**ft_dealwithlist(t_list **list, char **env, int red)
 {
 	int		i;
 	int		count;
@@ -207,6 +230,8 @@ char	**ft_dealwithlist(t_list **list, char **env)
 		// printf("%d\n", list[i]->TYPE);
 		if (list[i]->TYPE == VARIABLE)
 			ft_expandvariables(list[i], env);
+		if (list[i]->TYPE == WILD && (list[i + 1] && list[i + 1]->TYPE == SPACES))
+			ft_expandsimplewild(list[i], env);
 		if (list[i]->TYPE == DQ)
 			ft_expand_dq(list[i], env);
 		if (list[i]->TYPE == SQ)
@@ -216,8 +241,9 @@ char	**ft_dealwithlist(t_list **list, char **env)
 			while (list[++i] && !ft_spacevar(list[i]));
 			i--;
 			count++;
+			if (red)
+				break;
 		}
-
 	}
 	args = malloc(sizeof(char *) * (count + 1));
 	i = -1;
@@ -232,6 +258,7 @@ char	**ft_dealwithlist(t_list **list, char **env)
 		{
 			args[++count] = str;
 			str = ft_strdup("");
+				break;
 		}
 	}
 	free(str);

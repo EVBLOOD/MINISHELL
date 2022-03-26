@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 15:27:09 by sakllam           #+#    #+#             */
-/*   Updated: 2022/03/24 18:30:12 by sakllam          ###   ########.fr       */
+/*   Updated: 2022/03/26 17:21:41 by sakllam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,22 @@ int	ft_ORfunction(char position, t_tree *tree, char **env)
 	return (ret);
 }
 
+
+int	executeredirections(t_tree *tree, t_env *newenv)
+{
+	char	*filename;
+	char	**args;
+
+	args = ft_dealwithlist(tree->elements, newenv);
+	filename = args[0];
+	while (lst && lst->TYPE != SPACES)
+	{
+		filename = ft_strjoin(filename, lst->)
+		lst = lst->next;
+	}
+	free(filename);
+}
+
 int	ft_execution(char **env, t_tree *tree, char position, t_execute args)
 {
 	pid_t pid;
@@ -109,6 +125,12 @@ int	ft_execution(char **env, t_tree *tree, char position, t_execute args)
 		i = 1;
 	if (tree->left)
 		i = ft_execution(env, tree->left, 'l', args);
+	if (tree->type == AND && i)
+			return (i);
+	else if (tree->type == OR && !i)
+		return (i);
+	if (tree->right)
+		i = ft_execution(env, tree->right, 'r', args);
 	if (tree->type == RDIN || tree->type == RDHER || tree->type == RDOUT || tree->type == RDAPP)
 	{
 		if (i == -1)
@@ -116,13 +138,7 @@ int	ft_execution(char **env, t_tree *tree, char position, t_execute args)
 		args.pipe[0] = i;
 		i = 0;
 	}
-	if (tree->type == AND && i)
-			return (i);
-	else if (tree->type == OR && !i)
-		return (i);
-	if (tree->right)
-		i = ft_execution(env, tree->right, 'r', args);
-	if (tree->type != PIPE && tree->type != AND
+	else if (tree->type != PIPE && tree->type != AND
 		&& tree->type != OR && tree->type != RDAPP && tree->type != RDHER
 		&& tree->type != RDIN && tree->type != RDOUT)
 	{
