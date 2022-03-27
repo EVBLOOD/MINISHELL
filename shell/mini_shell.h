@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 23:36:27 by sakllam           #+#    #+#             */
-/*   Updated: 2022/03/26 21:34:05 by sakllam          ###   ########.fr       */
+/*   Updated: 2022/03/27 17:37:04 by sakllam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ pid_t	simple_cmd(char *path, char **cmd, char **env);
 char	*ft_searchandconcat(char **splited, char *cmd);
 char	*ft_isacmd(char *cmd, char **env);
 int ft_lstlen(t_list *list);
-t_list **check_wild(t_list **command);
+// t_list **check_wild(t_list **command);
 int getlen(t_list **str);
 void free_list(t_list *list);
 int execcmd(t_tree *tree, char **env);

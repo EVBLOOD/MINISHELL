@@ -22,7 +22,7 @@ int	ft_nbfiles(void)
 		return (0);
 	while((ret = readdir(dir)) != NULL)
 	{
-		if (ret->d_type == DT_REG)
+		if ((ret->d_type == DT_DIR || ret->d_type == DT_REG) && ret->d_name[0] != '.')
 			i++;
 	}
 	closedir(dir);
@@ -68,7 +68,7 @@ char	**ft_simplewild(void)
 	if (!dir)
 		return(NULL);
 	while((ret = readdir(dir)) != NULL)
-		if (ret->d_type == DT_REG)
+		if ((ret->d_type == DT_DIR || ret->d_type == DT_REG) && ret->d_name[0] != '.')
 			names[++i] = ft_strdup(ret->d_name);
 	names[++i] = NULL;
 	closedir(dir);

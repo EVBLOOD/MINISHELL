@@ -16,8 +16,8 @@ int execpipe(t_tree *tree, char **env, int pip[2])
 	char	*buf;
 
 	ret = 1;
-	tree->elements = check_wild(tree->elements);
-	command = ft_dealwithlist(tree->elements, env);
+	// tree->elements = check_wild(tree->elements);
+	command = ft_dealwithlist(tree->elements, env, 0);
 	path = ft_isacmd(command[0], env);
 	if (path)
 	{
@@ -43,8 +43,8 @@ pid_t	midel_first_partpipe(int *wr_fd, t_tree *tree, char **env)
 	pid_t	id;
 	char	**command;
 
-	tree->elements = check_wild(tree->elements);
-	command = ft_dealwithlist(tree->elements, env);
+	// tree->elements = check_wild(tree->elements);
+	command = ft_dealwithlist(tree->elements, env, 0);
 	path = ft_isacmd(command[0], env);
 	pipe(wr_fd);
 	id = fork();

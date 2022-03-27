@@ -8,8 +8,8 @@ int execredir(t_tree *tree, char **env, int fd, int Ptype)
 	char	**command;
 
 	ret = 1;
-	tree->elements = check_wild(tree->elements);
-	command = ft_dealwithlist(tree->elements, env);
+	// tree->elements = check_wild(tree->elements);
+	command = ft_dealwithlist(tree->elements, env, 0);
 	path = ft_isacmd(command[0], env);
 	if (path)
 	{
@@ -79,7 +79,7 @@ int	ft_RDRfunction(char position, t_tree *tree, char **env, int Ptype, int fd)
 
 	if (position == 'l')
 	{
-		command = ft_dealwithlist(tree->elements, env);
+		command = ft_dealwithlist(tree->elements, env, 0);
 		if (command[0][0] == '*')
 		{
 			printf("minishell: *: ambiguous redirect\n");

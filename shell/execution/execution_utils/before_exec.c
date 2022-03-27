@@ -6,15 +6,37 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 13:55:00 by sakllam           #+#    #+#             */
-/*   Updated: 2022/03/26 21:40:36 by sakllam          ###   ########.fr       */
+/*   Updated: 2022/03/27 22:56:43 by sakllam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../mini_shell.h"
 
-void	ft_expandvariables(t_list *list, char **env)
+int	countspacesofvar(char *var)
+{
+	int	i;
+	int	count;
+
+	i = -1;
+	count = 0;
+	while (var[++i])
+	{
+		if (ft_strchr(var[i], " \t\n\v\f\r"))
+		{
+			count++;
+			while (var[++i] && ft_strchr(var[i], " \t\n\v\f\r"));
+			if (!var[i])
+				break;
+			i--;
+		}
+	}
+	return (count);
+}
+
+int	ft_expandvariables(t_list *list, char **env)
 {
 	int		i;
+	int		count;
 	int		found;
 	char	*var;
 
@@ -34,6 +56,12 @@ void	ft_expandvariables(t_list *list, char **env)
 		list->splited = ft_strdup("");
 	else
 		list->splited = ft_strdup(&env[i][6]);
+	i = -1;
+	count = 0;
+	var = list->splited;
+	list->splited = ft_strtrim(list->splited, " \t\n\v\f\r");
+	free(var);
+	return (countspacesofvar(list->splited));
 }
 
 void	ft_expandvariablesdq(char **var, char **env)
@@ -208,19 +236,50 @@ int	ft_countwildexpantion(void)
 	return (i);
 }
 
-void	ft_expandsimplewild(t_list *list, char **env)
-{
-	char	**files;
+// void	ft_expandsimplewild(void)
+// {
+// 	char	**files;
 
-	files = ft_simplewild();
+// 	files = ft_simplewild();
+// 	return (files);
+// }
+
+char	**ft_splitvar(char *splited)
+{
+	int		i;
+	int		j;
+	int		x;
+	char	**ret;
+
+	i = -1;
+	x = -1;
+	j = 0;
+	ret = malloc(sizeof(char *) * (countspacesofvar(splited) + 1));
+	while (splited[++i])
+	{
+		if (ft_strchr(splited[i], " \t\n\v\f\r"))
+		{
+			ret[++x] = ft_substr(splited, x - j, j);
+			while (splited[++i] && ft_strchr(splited[i], " \t\n\v\f\r"));
+			if (!splited[i])
+				break;
+			j = 0;
+		}
+		j++;
+	}
+	ret[++x] = NULL;
+	return (ret);
 }
+
 
 char	**ft_dealwithlist(t_list **list, char **env, int red)
 {
 	int		i;
+	int		x;
 	int		count;
 	char	*str;
 	char	**args;
+	char	**files;
 
 	i = -1;
 	count = 1;
@@ -229,9 +288,14 @@ char	**ft_dealwithlist(t_list **list, char **env, int red)
 	{
 		// printf("%d\n", list[i]->TYPE);
 		if (list[i]->TYPE == VARIABLE)
-			ft_expandvariables(list[i], env);
-		if (list[i]->TYPE == WILD && (list[i + 1] && list[i + 1]->TYPE == SPACES))
-			ft_expandsimplewild(list[i], env);
+			count += ft_expandvariables(list[i], env);
+		if (list[i]->TYPE == WILD)
+		{
+			count += ft_countwildexpantion();
+			while (list[i] && list[i]->TYPE == WILD)
+				i++;
+			i--;
+		}
 		if (list[i]->TYPE == DQ)
 			ft_expand_dq(list[i], env);
 		if (list[i]->TYPE == SQ)
@@ -251,17 +315,40 @@ char	**ft_dealwithlist(t_list **list, char **env, int red)
 	str = ft_strdup("");
 	while (list[++i])
 	{
-		if (list[i]->TYPE != SPACES && ft_spacevar(list[i]))
+		if (list[i]->TYPE != VARIABLE && list[i]->TYPE != WILD && list[i]->TYPE != SPACES && ft_spacevar(list[i]))
 			str = ft_strjoin(str, list[i]->splited);
-		if ((i || !list[i + 1])&& (list[i]->TYPE == SPACES || !list[i + 1]
+		if (list[i]->TYPE == WILD)
+		{
+			x = -1;
+			files = ft_simplewild();
+			while (files[++x])
+				args[++count] = files[x];
+			while (list[i] && list[i]->TYPE == WILD)
+				i++;
+			if (!list[i])
+				break ;
+			i--;
+		}
+		if (list[i]->TYPE == VARIABLE)
+		{
+			x = -1;
+			files = ft_splitvar(list[i]->splited);
+			while (files[++i])
+			{
+				args[++count] = ft_strjoin(str, files[++i]);
+				str = 
+			}
+		}
+		if ((i || !list[i + 1]) && (list[i]->TYPE == SPACES || !list[i + 1]
 			|| (*str && !ft_spacevar(list[i]))))
 		{
 			args[++count] = str;
 			str = ft_strdup("");
+			if (red)
 				break;
 		}
 	}
-	free(str);
+	free(str);	
 	args[++count] = NULL;
 	return (args);
 }

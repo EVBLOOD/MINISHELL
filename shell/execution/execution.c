@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 15:27:09 by sakllam           #+#    #+#             */
-/*   Updated: 2022/03/26 17:21:41 by sakllam          ###   ########.fr       */
+/*   Updated: 2022/03/27 19:50:32 by sakllam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	ft_ANDfuction(char position, t_tree *tree, char **env)
 	ret = 1;
 
 	tree->elements = (tree->elements);
-	command = ft_dealwithlist(tree->elements, env);
+	command = ft_dealwithlist(tree->elements, env, 0);
 	path = ft_isacmd(command[0], env);
 	if (path)
 	{
@@ -59,8 +59,8 @@ int execcmd(t_tree *tree, char **env)
 	char	**command;
 
 	ret = 1;
-	tree->elements = check_wild(tree->elements);
-	command = ft_dealwithlist(tree->elements, env);
+	// tree->elements = check_wild(tree->elements);
+	command = ft_dealwithlist(tree->elements, env, 0);
 	path = ft_isacmd(command[0], env);
 	if (path)
 	{
@@ -81,7 +81,7 @@ int	ft_ORfunction(char position, t_tree *tree, char **env)
 
 	ret = 1;
 	tree->elements = (tree->elements);
-	command = ft_dealwithlist(tree->elements, env);
+	command = ft_dealwithlist(tree->elements, env, 0);
 	path = ft_isacmd(command[0], env);
 	if (path)
 	{
@@ -89,25 +89,30 @@ int	ft_ORfunction(char position, t_tree *tree, char **env)
 		ret = ft_getreturn();
 	}
 	else
-		printf("minishell: %s:Command not found\n", command[0]);
+		printf("minishell:%s:Command not found\n", command[0]);
 	return (ret);
 }
 
 
-int	executeredirections(t_tree *tree, t_env *newenv)
+int	ft_files(char **files)
 {
-	char	*filename;
-	char	**args;
+	int	i;
 
-	args = ft_dealwithlist(tree->elements, newenv);
-	filename = args[0];
-	while (lst && lst->TYPE != SPACES)
-	{
-		filename = ft_strjoin(filename, lst->)
-		lst = lst->next;
-	}
-	free(filename);
+	i = -1;
+	while (files[++i]) ;
+	return (i);
 }
+
+// int	executeredirections(t_tree *tree, t_env *newenv)
+// {
+// 	char	**filenames;
+// 	char	**args;
+
+// 	filenames = ft_dealwithlist(tree->elements, newenv, 1);
+// 	if (ft_files(filenames) > 1)
+// 		ft_error()
+// 	// free(filenames);
+// }
 
 int	ft_execution(char **env, t_tree *tree, char position, t_execute args)
 {
