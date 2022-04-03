@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   before_exec.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
+/*   By: saad <saad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 13:55:00 by sakllam           #+#    #+#             */
-/*   Updated: 2022/04/02 19:32:43 by sakllam          ###   ########.fr       */
+/*   Updated: 2022/04/03 03:04:04 by saad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -349,6 +349,130 @@ char **ft_convertfromlisttochar(t_befexec *list)
 	return (cnv);
 }
 
+char	*ft_replaceandjoin(char **str, char *tojoin)
+{
+	char	*tmp;
+
+	tmp = *str;
+	*str = ft_strjoin(*str, tojoin);
+	free(tmp);
+	return (*str);
+}
+
+int	ft_countstars(char *str, int wild)
+{
+	int	i;
+	int	count;
+
+	i = 0;
+	count = 0;
+	while (str[i])
+	{
+		if (str[i] == '*')
+			count++;
+		i++;
+	}
+	return (count + wild);
+}
+
+void ft_varmerging(t_list *list, char **str, int *red, int *wild, t_befexec **head)
+{
+	int	i;
+
+	i = 0;
+	while (list->expanded[i])
+	{
+		if (ft_countstars(list->expanded[i], *wild) > 0)
+			ft_wildmergin&str, head);
+		else
+			*str = ft_replaceandjoin(str, list->expanded[i]);
+		if (!list->expanded[i + 1])
+			break;
+		ft_ofcadd_back(head, ft_createnode(str));
+		*str = ft_strdup("");
+		if (*red)
+			*red = -1;
+		i++;
+	}
+}
+
+char	*ft_wildmerging(t_list **list, char **str, int *wild, int *i)
+{
+	*str = ft_replaceandjoin(str, "*");
+	(*wild)++;
+	while (list[*i] && list[*i]->TYPE == WILD)
+		(*i)++;
+	(*i)--;
+	return (*str)
+}
+
+char	*ft_dq_sq_wrdmerging(t_list *list, char **str, int *wild)
+{
+	int	i;
+
+	i = 0;
+	*str = ft_replaceandjoin(str, list->splited);
+	while (list->splited[i])
+	{
+		if (list->splited[i] == '*')
+			(*wild)--;
+		i++;
+	}
+	return (*str);
+}
+
+void	ft_wildmergin(char **str, t_befexec **head)
+{
+	char **names;
+	int	i;
+
+	names = ft_wildcard_(*str);
+	free (*str);
+	i = 0;
+	while (names[i])
+	{
+		ft_ofcadd_back(head, ft_createnode(names[i]));
+		i++;
+	}
+}
+
+t_befexec	*ft_merging(t_list **list, char **env, int red)
+{
+	t_befexec	*head;
+	int			wild;
+	int			i;
+	char		*str;
+
+	str = ft_strdup("");
+	wild = 0;
+	i = 0;
+	head = NULL;
+	while (list[i])
+	{
+		if (list[i]->TYPE == VARIABLE)
+			ft_varmerging(list[i], &str, &red, &wild, &head);
+		if (red == -1)
+			break ;
+		if (list[i]->TYPE == DQ || list[*i]->TYPE == SQ || list[*i]->TYPE == WORD)
+			str = ft_dq_sq_wrdmerging(list[i], &str, &wild);
+		if (list[i]->TYPE == WILD)
+			str = ft_wildmerging(list, &str, &wild, &i);
+		if (list[i]->TYPE == SPACES)
+		{
+			if (wild > 0)
+				ft_wildmergin(&str, &head);
+			else
+				ft_ofcadd_back(&head, ft_createnode(str));
+			if (red)
+				break;
+			str = ft_strdup("");
+			wild = 0;
+		}
+		i++;
+	}
+	return (head);
+}
+
 char	**ft_dealwithlist(t_list **list, char **env, int red)
 {
 	char		**converted;
@@ -356,8 +480,12 @@ char	**ft_dealwithlist(t_list **list, char **env, int red)
 	int			i;
 
 	ft_replaceall(list, env, red);
-	ret = ft_expandingwildcard(list, env, red);
+	ret = ft_merging(list, env, red);
 	converted = ft_convertfromlisttochar(ret);
+
+
+
+	// ret = ft_expandingwildcard(list, env, red);
 	i = 0;
 	puts("-----------------------------------");
 	while (converted[i])
