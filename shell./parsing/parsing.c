@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 06:06:53 by sakllam           #+#    #+#             */
-/*   Updated: 2022/03/25 15:35:58 by sakllam          ###   ########.fr       */
+/*   Updated: 2022/04/04 17:04:08 by sakllam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,18 +27,13 @@ t_tree	*ft_parsing(char *line)
 		free(tmpline);
 		return (NULL);
 	}
+	free(tmpline);
 	list = ft_lexicalanalysis(line);
-	tmplist = list;
-	while (tmplist)
-	{
-		// if (tmplist->TYPE != SPACES)
-		// 	printf("word: %s : type: %d\n", tmplist->splited, tmplist->TYPE);
-		// else
-		// 	printf("spaces: %d\n", tmplist->nb);
-		tmplist = tmplist->next;
-	}
 	if (!list || ft_syntaxanalysis(list))
+	{
+		free(line);
 		return (NULL);
+	}
 	listv = ft_redirectionsset(list);
 	tree = ft_abs(&listv, NULL);
 	return (tree);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   before_exec.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saad <saad@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 13:55:00 by sakllam           #+#    #+#             */
-/*   Updated: 2022/04/03 03:04:04 by saad             ###   ########.fr       */
+/*   Updated: 2022/04/08 02:47:33 by sakllam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,37 +27,6 @@ char	*ft_expand_sq(t_list *list)
 	str[i - 1] = '\0';
 	return(str);
 }
-
-// int	ft_countchars(t_list **list, int start, int end)
-// {
-// 	int	i;
-// 	int	extra_i;
-// 	int	count;
-
-// 	i = start;
-// 	count = 0;
-// 	while (i <= end)
-// 	{
-// 		if (list[i]->TYPE == VARIABLE && i != end)
-// 		{
-// 			extra_i = 0;
-// 			while (list[i]->expanded[extra_i])
-// 				i++;
-// 			count += ft_strlen(list[i]->expanded[extra_i -1]);
-// 		}
-// 		if (list[i]->TYPE == VARIABLE && i == end)
-// 		{
-// 			count += ft_strlen(list[i]->expanded[0]);
-// 		}
-// 		if (list[i]->TYPE == SQ)
-// 			count += ft_strlen(list[i]->splited);
-// 		if (list[i]->TYPE == DQ)
-// 			count += ft_strlen(list[i]->splited);
-// 		if (list[i]->TYPE == WORD)
-// 			count += ft_strlen(list[i]->splited);
-// 		i++;
-// 	}
-// }
 
 char	*ft_substrlist(t_list **list, int start, int end)
 {
@@ -147,15 +116,6 @@ void	ft_normalnodeslist(t_list **list, int start, int end, t_befexec **all)
 		if (list[i]->TYPE == VARIABLE)
 		{
 			extra_i = 0;
-			// if (!list[i + 1])
-			// {
-			// 	while (list[i]->expanded[extra_i])
-			// 	{
-			// 		puts(list[i]->expanded[extra_i]);
-			// 		ft_ofcadd_back(all, ft_createnode(list[i]->expanded[extra_i]));
-			// 		extra_i++;
-			// 	}
-			// }
 			if (i == end)
 			{
 				tmp = str;
@@ -215,7 +175,6 @@ t_befexec	*ft_expandingwildcard(t_list **list, char **env, int red)
 	head = NULL;
 	while (list[i])
 	{
-		puts("alo?");
 		if (list[i]->TYPE == WILD)
 			wild = 1;
 		if (list[i]->TYPE == VARIABLE)
@@ -248,7 +207,6 @@ t_befexec	*ft_expandingwildcard(t_list **list, char **env, int red)
 				j = 0;
 				while (_wild[j])
 				{
-					puts(_wild[j]);
 					ft_ofcadd_back(&head, ft_createnode(_wild[j]));
 					j++;
 				}
@@ -277,24 +235,8 @@ void	ft_replaceall(t_list **list, char **env, int red)
 	{
 		if (list[i]->TYPE == VARIABLE)
 		{
-			list[i]->expanded = ft_expandvariables(*list, env);
-
-
-
-
-
-			int x = 0;
-			while (list[i]->expanded[x])
-			{
-				puts(list[i]->expanded[x]);
-				x++;
-			}
-
-
-
-
-			
-			if (!(list[0]->expanded) && red)
+			list[i]->expanded = ft_expandvariables(list[i], env);
+			if (list[0]->expanded[0] && list[0]->expanded[0][0] == ' ' && red)
 				break;
 		}
 		if (list[i]->TYPE == SQ)
@@ -302,27 +244,18 @@ void	ft_replaceall(t_list **list, char **env, int red)
 			str = ft_expand_sq(list[i]);
 			free(list[i]->splited);
 			list[i]->splited = str;
-
-
-
-			puts(list[i]->splited);
-
-
-
-
 		}
 		if (list[i]->TYPE == DQ)
 		{
 			str = ft_expand_dq(list[i], env);
 			free(list[i]->splited);
-			list[i]->splited = str;
-
-
-			puts(list[i]->splited);
-
-
-
-			
+			list[i]->splited = str;	
+		}
+		if (list[i]->TYPE == WORD)
+		{
+			str = ft_strdup(list[i]->splited);
+			free(list[i]->splited);
+			list[i]->splited = str;	
 		}
 		if (list[i]->TYPE == SPACES && red)
 			break;
@@ -359,6 +292,21 @@ char	*ft_replaceandjoin(char **str, char *tojoin)
 	return (*str);
 }
 
+
+void	ft_wildmergin(char **str, t_befexec **head)
+{
+	char **names;
+	int	i;
+
+	names = ft_wildcard_(*str);
+	i = 0;
+	while (names[i])
+	{
+		ft_ofcadd_back(head, ft_createnode(names[i]));
+		i++;
+	}
+}
+
 int	ft_countstars(char *str, int wild)
 {
 	int	i;
@@ -382,16 +330,19 @@ void ft_varmerging(t_list *list, char **str, int *red, int *wild, t_befexec **he
 	i = 0;
 	while (list->expanded[i])
 	{
-		if (ft_countstars(list->expanded[i], *wild) > 0)
-			ft_wildmergin&str, head);
-		else
+		if (list->expanded[i][0] == ' ' && ft_strlen(*str) > 0)
+		{
+			if (ft_countstars("", *wild) > 0)
+				ft_wildmergin(str, head);
+			ft_ofcadd_back(head, ft_createnode(*str));
+			*str = ft_strdup("");
+			if (*red)
+				*red = -1;
+		}
+		if (list->expanded[i][0] != ' ')
+		{
 			*str = ft_replaceandjoin(str, list->expanded[i]);
-		if (!list->expanded[i + 1])
-			break;
-		ft_ofcadd_back(head, ft_createnode(str));
-		*str = ft_strdup("");
-		if (*red)
-			*red = -1;
+		}
 		i++;
 	}
 }
@@ -403,7 +354,7 @@ char	*ft_wildmerging(t_list **list, char **str, int *wild, int *i)
 	while (list[*i] && list[*i]->TYPE == WILD)
 		(*i)++;
 	(*i)--;
-	return (*str)
+	return (*str);
 }
 
 char	*ft_dq_sq_wrdmerging(t_list *list, char **str, int *wild)
@@ -421,21 +372,6 @@ char	*ft_dq_sq_wrdmerging(t_list *list, char **str, int *wild)
 	return (*str);
 }
 
-void	ft_wildmergin(char **str, t_befexec **head)
-{
-	char **names;
-	int	i;
-
-	names = ft_wildcard_(*str);
-	free (*str);
-	i = 0;
-	while (names[i])
-	{
-		ft_ofcadd_back(head, ft_createnode(names[i]));
-		i++;
-	}
-}
-
 t_befexec	*ft_merging(t_list **list, char **env, int red)
 {
 	t_befexec	*head;
@@ -443,21 +379,23 @@ t_befexec	*ft_merging(t_list **list, char **env, int red)
 	int			i;
 	char		*str;
 
-	str = ft_strdup("");
 	wild = 0;
 	i = 0;
 	head = NULL;
+	str = ft_strdup("");
+	if (list[i]->TYPE == SPACES)
+		i++;
 	while (list[i])
 	{
 		if (list[i]->TYPE == VARIABLE)
 			ft_varmerging(list[i], &str, &red, &wild, &head);
 		if (red == -1)
 			break ;
-		if (list[i]->TYPE == DQ || list[*i]->TYPE == SQ || list[*i]->TYPE == WORD)
+		if (list[i]->TYPE == DQ || list[i]->TYPE == SQ || list[i]->TYPE == WORD)
 			str = ft_dq_sq_wrdmerging(list[i], &str, &wild);
 		if (list[i]->TYPE == WILD)
 			str = ft_wildmerging(list, &str, &wild, &i);
-		if (list[i]->TYPE == SPACES)
+		if (list[i]->TYPE == SPACES || !list[i + 1])
 		{
 			if (wild > 0)
 				ft_wildmergin(&str, &head);
@@ -482,19 +420,5 @@ char	**ft_dealwithlist(t_list **list, char **env, int red)
 	ft_replaceall(list, env, red);
 	ret = ft_merging(list, env, red);
 	converted = ft_convertfromlisttochar(ret);
-
-
-
-	// ret = ft_expandingwildcard(list, env, red);
-	i = 0;
-	puts("-----------------------------------");
-	while (converted[i])
-	{
-		puts(converted[i]);
-		i++;
-	}
-	puts("-----------------------------------");
-	puts("amdra?");
-	exit(0);
 	return (converted);
 }

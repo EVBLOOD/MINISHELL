@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 23:58:40 by sakllam           #+#    #+#             */
-/*   Updated: 2022/03/21 18:06:50 by sakllam          ###   ########.fr       */
+/*   Updated: 2022/04/04 20:21:31 by sakllam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,9 @@ t_list	*ft_setword(char *line, int i)
 	if (!node)
 		return (NULL);
 	counter = 0;
-	node->splited = malloc(sizeof(char) * i);
+	node->splited = malloc(sizeof(char) * (i + 1));
+	if (!node->splited)
+		return (NULL);
 	while (i > counter)
 	{
 		node->splited[counter] = line[counter];
@@ -191,7 +193,9 @@ int	ft_qouting(char **line, t_list **node, char qoute)
 	free((*node)->splited); // NB: I can't get it
 	while ((*line)[i] && (*line)[i] != qoute)
 		i++;
-	(*node)->splited = malloc(i + 1);
+	(*node)->splited = malloc(i + 2);
+	if (!(*node)->splited)
+		return (0);
 	if (!(*node)->splited)
 		return (2);
 	(*node)->splited[0] = qoute;
@@ -275,8 +279,8 @@ void	ft_dealingwithspaces(char **line, int *spaces, t_list **head)
 	if (*spaces > 0)
 	{
 		node = malloc(sizeof(t_list));
-		// if (!node)
-			// return (NULL);
+		if (!node)
+			return ;
 		node->nb = *spaces;
 		node->TYPE = SPACES;
 		node->next = NULL;
@@ -295,9 +299,9 @@ t_list	*ft_lexicalanalysis(char *line)
 	head = NULL;
 	spaces = 0;
 	ft_whiterun(&line);
+	i = 0;
 	while (*line)
 	{
-		i = 0;
 		spaces = ft_whiterun(&line);
 		ft_dealingwithspaces(&line, &spaces, &head);
 		ft_navigatewords(&line, &i);

@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 23:36:27 by sakllam           #+#    #+#             */
-/*   Updated: 2022/04/02 12:24:41 by sakllam          ###   ########.fr       */
+/*   Updated: 2022/04/08 23:55:04 by sakllam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,9 @@ typedef struct s_befexec
 typedef struct s_execute
 {
 	t_tree	*parrent;
+	int		input;
+	int		output;
+	t_tree	*root;
 	int		pipe[2];
 }	t_execute;
 
@@ -100,7 +103,8 @@ char	**ft_split(char const *s, char c);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strtrim(char const *s1, char const *set);
 int		ft_execution(char **env, t_tree *tree, char position, t_execute args);
-int	ft_getreturn(void);
+// int	ft_getreturn(void);
+int	ft_getreturn(pid_t id);
 char	*ft_getenv(char **env, char *val);
 pid_t	simple_cmd(char *path, char **cmd, char **env);
 char	*ft_searchandconcat(char **splited, char *cmd);

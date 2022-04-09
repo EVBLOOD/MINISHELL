@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 11:43:30 by sakllam           #+#    #+#             */
-/*   Updated: 2022/03/28 15:27:02 by sakllam          ###   ########.fr       */
+/*   Updated: 2022/04/05 15:00:04 by sakllam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,9 @@ int	ft_envsize(char **elements)
 {
 	int	i;
 
-	i = -1;
-	while (elements[++i]) ;
+	i = 0;
+	while (elements[i])
+		i++;
 	return (i + 1);
 }
 

@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 23:58:50 by sakllam           #+#    #+#             */
-/*   Updated: 2022/03/28 13:52:48 by sakllam          ###   ########.fr       */
+/*   Updated: 2022/04/08 20:01:54 by sakllam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,10 @@ int	main(int argc, char *argv[], char *env[])
 {
 	char	*line;
 	t_tree	*tree;
-	t_execute args;
-	char *sr_cap;
-	char	**newenv;
-	char	**joined;
+	t_execute	args;
+	char		*sr_cap;
+	char		**newenv;
+	char		**joqined;
 	//signals
 	newenv = ft_cloneenv(env);
 	while (1)
@@ -67,26 +67,12 @@ int	main(int argc, char *argv[], char *env[])
 			printf("$> exit\n");
 			exit (0);
 		}
-		if (line)
+		if (line[0] != '\n')
 		{
 			add_history(line);
 			tree = ft_parsing(line);
-		// affich(tree, "root", 0);
+			args.root = tree;
 			ft_execution(newenv, tree, 'p', args);
 		}
-		// if (tree)
-		// {
-		// if(tree->elements)
-		// 	{
-		// 		joined = ft_dealwithlist(tree->elements, newenv);
-		// 		int i;
-		// 		i = 0;
-		// 		while (joined[i])
-		// 		{
-		// 			printf("|%s| \n", joined[i]);
-		// 			i++;
-		// 		}
-		// 	}
-		// }
 	}
 }

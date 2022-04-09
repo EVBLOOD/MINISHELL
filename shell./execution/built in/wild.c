@@ -72,7 +72,7 @@ char	**ft_returngiven(char **names, char	*rgx)
 	else
 	{
 		free(names);
-		names = malloc(sizeof(char **) * 2);
+		names = malloc(sizeof(char *) * 2);
 		names[0] = rgx;
 		names[1] = NULL;
 	}

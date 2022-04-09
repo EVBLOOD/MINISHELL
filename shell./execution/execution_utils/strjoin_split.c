@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 11:03:23 by sakllam           #+#    #+#             */
-/*   Updated: 2022/03/26 17:18:29 by sakllam          ###   ########.fr       */
+/*   Updated: 2022/04/03 22:57:01 by sakllam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ char	**ft_split(char const *s, char c)
 	i = 0;
 	if (!s)
 		return (0);
-	table = (char **)malloc((ft_count(s, c) + 1) * sizeof(*table));
+	table = malloc((ft_count(s, c) + 1) * sizeof(char *));
 	if (!table)
 		return (table);
 	while (*s)

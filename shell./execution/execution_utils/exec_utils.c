@@ -1,11 +1,11 @@
 #include "../../mini_shell.h"
-int	ft_getreturn(void)
-{
-	int	ret;
+// int	ft_getreturn(void)
+// {
+// 	int	ret;
 
-	waitpid(-1, &ret, 0);
-	return (ret);
-}
+// 	waitpid(-1, &ret, 0);
+// 	return (ret);
+// }
 
 char	*ft_getenv(char **env, char *val)
 {
