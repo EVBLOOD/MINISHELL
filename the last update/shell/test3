@@ -1,0 +1,123 @@
+total 176
+-rw-r--r--   1 sakllam  candidate      0 Apr  3 12:21 *
+drwxr-xr-x  56 sakllam  candidate   1904 Apr 12 11:45 .
+drwx------  31 sakllam  candidate   1054 Apr 10 20:52 ..
+-rw-r--r--   1 sakllam  candidate      0 Mar 27 19:33 ...
+drwxr-xr-x   3 sakllam  candidate    102 Mar 25 10:22 .vscode
+-rwxr-xr-x   1 sakllam  candidate  44216 Apr 12 11:45 a.out
+-rw-r--r--   1 sakllam  candidate      0 Mar 27 20:16 abro
+-rw-r--r--   1 sakllam  candidate      0 Mar 27 21:11 abro%
+-rw-r--r--   1 sakllam  candidate      0 Mar 27 21:11 abro1%
+-rw-r--r--   1 sakllam  candidate      0 Mar 27 21:26 akllam
+-rw-r--r--   1 sakllam  candidate      0 Mar 27 20:15 bro
+-rw-r--r--   1 sakllam  candidate      0 Mar 27 19:32 cmdls
+-rw-r--r--   1 sakllam  candidate      0 Apr  4 23:01 echo
+drwxr-xr-x   8 sakllam  candidate    272 Apr  5 18:22 execution
+-rw-r--r--   1 sakllam  candidate      3 Mar 27 19:32 fiile
+-rw-r--r--   1 sakllam  candidate      3 Mar 27 19:32 file
+-rw-r--r--   1 sakllam  candidate      3 Mar 27 19:32 file1
+-rw-r--r--   1 sakllam  candidate      3 Mar 27 19:32 file2
+-rw-r--r--   1 sakllam  candidate      3 Mar 27 19:32 file3
+-rw-r--r--   1 sakllam  candidate      0 Mar 27 19:32 filels
+-rw-r--r--   1 sakllam  candidate     29 Mar 27 19:32 kk
+-rw-r--r--   1 sakllam  candidate      0 Mar 27 19:32 kkll1
+-rw-r--r--   1 sakllam  candidate      0 Mar 27 19:32 kkls
+-rw-r--r--   1 sakllam  candidate      0 Mar 27 19:32 klll1
+-rw-r--r--   1 sakllam  candidate      0 Mar 27 19:32 ks
+-rw-r--r--   1 sakllam  candidate      0 Apr  4 23:01 la
+-rw-r--r--   1 sakllam  candidate      0 Mar 27 19:32 las
+-rw-r--r--   1 sakllam  candidate      0 Mar 27 19:32 las -la
+-rw-r--r--   1 sakllam  candidate      0 Mar 27 19:32 las-la
+-rw-r--r--   1 sakllam  candidate      0 Mar 27 19:32 lbs
+-rw-r--r--   1 sakllam  candidate      0 Apr  4 23:01 lc
+-rw-r--r--   1 sakllam  candidate    139 Mar 27 19:32 ll
+-rw-r--r--   1 sakllam  candidate      0 Mar 27 19:32 lop
+-rw-r--r--   1 sakllam  candidate      0 Mar 30 01:51 ls
+-rw-r--r--   1 sakllam  candidate      0 Mar 27 19:32 ls-la
+-rw-r--r--   1 sakllam  candidate      0 Mar 27 19:32 lsls
+-rw-r--r--   1 sakllam  candidate      0 Mar 27 19:32 lsls-la
+-rw-r--r--   1 sakllam  candidate   2137 Apr 12 11:45 main.c
+-rw-r--r--   1 sakllam  candidate      0 Mar 27 21:11 maylan
+-rw-r--r--   1 sakllam  candidate   4021 Apr 12 09:14 mini_shell.h
+-rw-r--r--   1 sakllam  candidate      0 Apr  4 23:01 oke
+-rw-r--r--   1 sakllam  candidate      0 Mar 27 20:15 okey
+-rw-r--r--   1 sakllam  candidate      0 Mar 27 19:32 okeyyy
+drwxr-xr-x   9 sakllam  candidate    306 Mar 27 19:32 parsing
+-rw-r--r--   1 sakllam  candidate      0 Mar 27 21:26 saad
+-rw-r--r--   1 sakllam  candidate      0 Mar 30 23:23 saad akllam
+-rw-r--r--   1 sakllam  candidate      0 Apr  3 12:21 saad*
+-rw-r--r--   1 sakllam  candidate     64 Mar 28 16:24 seg
+-rw-r--r--   1 sakllam  candidate      0 Mar 27 19:32 sl
+-rw-r--r--   1 sakllam  candidate      0 Mar 27 19:32 slls
+-rw-r--r--   1 sakllam  candidate      0 Mar 27 19:32 ss
+-rw-r--r--   1 sakllam  candidate      0 Apr  4 22:45 sss1
+-rw-r--r--   1 sakllam  candidate    104 Mar 27 19:32 tes3
+-rw-r--r--   1 sakllam  candidate      0 Mar 27 19:32 test1
+-rw-r--r--   1 sakllam  candidate      0 Mar 27 19:32 test2
+-rw-r--r--   1 sakllam  candidate      0 Apr 12 12:06 test3
+*
+a.out
+abro
+abro%
+abro1%
+akllam
+bro
+cmdls
+echo
+execution
+fiile
+file
+file1
+file2
+file3
+filels
+kk
+kkll1
+kkls
+klll1
+ks
+la
+las
+las -la
+las-la
+lbs
+lc
+ll
+lop
+ls
+ls-la
+lsls
+lsls-la
+main.c
+maylan
+mini_shell.h
+oke
+okey
+okeyyy
+parsing
+saad
+saad akllam
+saad*
+seg
+sl
+slls
+ss
+sss1
+tes3
+test
+test1
+test2
+test3
+ls
+ls
+$PATH
+"$PATH"
+pk
+pk
+la
+la
+ks
+c
+
+/Users/sakllam/goinfre/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki
+"/Users/sakllam/goinfre/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki"
