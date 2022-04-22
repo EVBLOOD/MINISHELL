@@ -19,19 +19,16 @@ int ft_checkflag(char *str)
 
 	i = 0;
 	ret = 0;
-	if (str[i] == '-')
+	if (str[0] != '-')
+		return (1);
+	while (str[++i])
 	{
-		while (str[++i])
+		if (str[i] != 'n')
 		{
-			if (str[i] != 'n')
-			{
-				ret = 1;
-				break;
-			}
+			ret = 1;
+			break;
 		}
 	}
-	else
-		ret = 1;
 	return (ret);
 }
 
@@ -39,9 +36,9 @@ int	ft_echo(char **line)
 {
 	int	i;
 	int flag;
-	flag = 0;
+	flag = 1;
 
-	while(line[flag] && (!ft_strcmp(line[flag], "-n") || !ft_checkflag(line[flag])))
+	while(line[flag] && !ft_checkflag(line[flag]))
 		flag++;
 	i = flag;
 	while(line && line[i])

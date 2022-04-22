@@ -33,6 +33,23 @@ char *table[] = {
 };
 
 
+void handle(int sig, siginfo_t *info, void *c)
+{
+	sigset_t mask;
+
+	if (sig == SIGINT)
+		write(1, "\n$> ", 4);
+}
+
+void ft_signal()
+{
+	struct sigaction sa;
+	sa.sa_sigaction = &handle;
+	sa.sa_flags = SA_RESTART;
+	sigaction(SIGINT, &sa, NULL);
+	sigaction(SIGQUIT, &sa, NULL);
+}
+
 int ft_putchar(int c)
 {
 	write(1, &c, 1);
@@ -78,7 +95,10 @@ int	main(int argc, char *argv[], char *env[])
 	char		**joqined;
 	t_executenop	arg;
 	int  io[2];
-	//signals
+	int ret;
+	
+
+	ft_signal();
 	newenv = ft_cloneenv(env);
 	save_io(io);
 	while (1)
@@ -91,7 +111,7 @@ int	main(int argc, char *argv[], char *env[])
 			sr_cap = tgetstr("sr", NULL);
 			tputs(sr_cap, 0,  ft_putchar);
 			printf("$> exit\n");
-			exit (0);
+			exit (ret);
 		}
 		if (line[0] != '\n')
 		{
@@ -100,9 +120,9 @@ int	main(int argc, char *argv[], char *env[])
 			arg.root = tree;
 			arg.pos = 'p';
 			args.modepipe = 0;
-			affich(tree,  "root", 0);
+		//	affich(tree,  "root", 0);
 			if (tree)
-				run(tree, env);
+				ret = run(tree, env);
 				// ft_treeexecution(env, tree, 'p', arg);
 				// ft_execution(newenv, tree, arg, &args);
 		}
