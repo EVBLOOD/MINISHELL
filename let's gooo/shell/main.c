@@ -95,7 +95,6 @@ int	main(int argc, char *argv[], char *env[])
 	char		**joqined;
 	t_executenop	arg;
 	int  io[2];
-	int ret;
 	
 
 	ft_signal();
@@ -111,7 +110,7 @@ int	main(int argc, char *argv[], char *env[])
 			sr_cap = tgetstr("sr", NULL);
 			tputs(sr_cap, 0,  ft_putchar);
 			printf("$> exit\n");
-			exit (ret);
+			exit (0);
 		}
 		if (line[0] != '\n')
 		{
@@ -122,7 +121,7 @@ int	main(int argc, char *argv[], char *env[])
 			args.modepipe = 0;
 		//	affich(tree,  "root", 0);
 			if (tree)
-				ret = run(tree, env);
+				run(tree, env);
 				// ft_treeexecution(env, tree, 'p', arg);
 				// ft_execution(newenv, tree, arg, &args);
 		}
