@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 11:44:51 by sakllam           #+#    #+#             */
-/*   Updated: 2022/04/22 11:59:58 by sakllam          ###   ########.fr       */
+/*   Updated: 2022/04/23 21:09:11 by foulare          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,12 @@ char **delete_vars(int index, char **env)
 int vars_exists(char *var, char **env)
 {
     int i;
+    int len;
 
     i = -1;
+    len = ft_strlen(var);
     while (env[++i])
-        if (!ft_strncmp(env[i], var, ft_strlen(var)))
+        if (!ft_strncmp(env[i], var, len) && env[i][len] == '=')
             return (i);
     return (-1);
 }
