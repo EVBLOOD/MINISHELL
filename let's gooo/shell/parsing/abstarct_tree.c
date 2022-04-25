@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 23:59:33 by sakllam           #+#    #+#             */
-/*   Updated: 2022/04/22 01:45:36 by sakllam          ###   ########.fr       */
+/*   Updated: 2022/04/23 18:53:01 by sakllam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -200,21 +200,6 @@ t_tree	*ft_abs(t_list **parsresult, t_list *end)
 		node->right = ft_abs(&(next->next), end);
 		node->left = ft_abs(&tmp, next);
 	}
-	// else if (ft_lastredr(*parsresult, end))
-	// {
-	// 	tmp = (*parsresult);
-	// 	next = ft_lastredr(*parsresult, end);
-	// 	node = malloc(sizeof(t_tree));
-	// 	if (next->TYPE == RDHER)
-	// 	{
-	// 		node->elements = malloc(sizeof(t_list *) * 2);
-	// 		node->elements[0] = next;
-	// 		node->elements[1] = NULL;
-	// 	}
-	// 	node->type =  next->TYPE;
-	// 	node->left = ft_abs(&(next->next), end);
-	// 	node->right = ft_abs(&tmp, next);
-	// }
 	else if (ft_firstredr(*parsresult, end))
 	{
 		tmp = (*parsresult);
