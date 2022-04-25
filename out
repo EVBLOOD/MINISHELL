@@ -1,0 +1,11 @@
+Makefile
+a.out
+exec_tree.o
+execution
+in
+main.c
+main_utils.c
+mini_shell.h
+out
+parsing
+trush.c
