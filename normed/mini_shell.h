@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 00:45:31 by sakllam           #+#    #+#             */
-/*   Updated: 2022/04/25 02:48:39 by sakllam          ###   ########.fr       */
+/*   Updated: 2022/04/25 16:08:26 by sakllam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -262,4 +262,30 @@ void	itsnull(char **newenv);
 void	cleartrush(void);
 void ft_signal(void);
 void handle(int sig);
+char *ft_concat(char *s1, char *s2);
+int	ft_cd(char *dest);
+int ft_checkflag(char *str);
+int	ft_echo(char **line);
+int	ft_env(char **env);
+int isnum(char c);
+long long	ft_atoi_long(const char *str);
+int check_error_exit(char **command);
+int	ft_exit(char **command);
+int vars_equal(char *var);
+char **vars_notexist(char *var, char **env);
+int vars_exist(char *var, char **env, int index);
+int	ft_pwd(void);
+int	ft_isalnum(int c);
+char **delete_vars(int index, char **env);
+int vars_exists(char *var, char **env);
+int check_errors(char **str);
+int	ft_unset(char ***env, char **cmd);
+int	ft_nbfiles(void);
+int		ft_doublesize(char **names);
+char	**ft_returngiven(char **names, char	*rgx);
+char	**ft_simplewild(void);
+int	ft_nbfilestwo(char *pattren);
+char	**ft_wildrgex(char *pattern);
+char	**ft_wildcard_(char *pattern);
+int	ft_export(char **cmd, char ***env);
 #endif

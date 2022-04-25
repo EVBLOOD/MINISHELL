@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pwd.c                                           :+:      :+:    :+:   */
+/*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/08 22:51:49 by sakllam           #+#    #+#             */
-/*   Updated: 2022/04/22 11:59:44 by sakllam          ###   ########.fr       */
+/*   Created: 2022/04/25 15:56:26 by sakllam           #+#    #+#             */
+/*   Updated: 2022/04/25 15:56:41 by sakllam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../mini_shell.h"
 
-int	ft_pwd(void)
+int	ft_env(char **env)
 {
-	char	pwd[PATH_MAX];
+	int i;
 
-	getcwd(pwd, PATH_MAX);
-	write(1, pwd, strlen(pwd));
-	write(1, "\n", 1);
+	i = -1;
+	while (env[++i])
+	{
+		write (1, env[i], ft_strlen(env[i]));
+		write (1, "\n", 1);
+	}
 	return (0);
 }

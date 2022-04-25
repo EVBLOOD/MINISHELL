@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 02:38:11 by sakllam           #+#    #+#             */
-/*   Updated: 2022/04/25 02:48:25 by sakllam          ###   ########.fr       */
+/*   Updated: 2022/04/25 16:11:39 by sakllam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,10 @@ void ft_signal(void)
 	}
 }
 
-ft_thegreatbash(char *line, t_tree *tree, char ***newenv)
+void	ft_thegreatbash(char *line, t_tree *tree, char ***newenv)
 {
 	add_history(line);
+	tree = ft_parsing(line);
 	g_exec.isexecuting = 1;
 	if (tree)
 		run(tree, *newenv);
