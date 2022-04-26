@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 01:11:18 by sakllam           #+#    #+#             */
-/*   Updated: 2022/04/25 01:12:39 by sakllam          ###   ########.fr       */
+/*   Updated: 2022/04/26 04:29:48 by foulare          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	isredirections(int type)
 
 int	isnextaword(t_list *lst)
 {
-	if (lst->TYPE == WORD || lst->TYPE == WILD)
+	if (lst->type == WORD || lst->type == WILD)
 		return (0);
 	return (1);
 }
@@ -37,7 +37,7 @@ t_list	*ft_createnodes(t_list *lst)
 	node->herdocexp = lst->herdocexp;
 	node->splited = lst->splited;
 	node->sqp = lst->sqp;
-	node->TYPE = lst->TYPE;
+	node->type = lst->type;
 	node->nb = lst->nb;
 	node->next = NULL;
 	return (node);
@@ -46,17 +46,17 @@ t_list	*ft_createnodes(t_list *lst)
 int	ft_redirectiononecon(t_list *lst)
 {
 	return (lst
-		&& lst->TYPE != PIPE
-		&& lst->TYPE != OR
-		&& lst->TYPE != AND
-		&& lst->TYPE != PRTOPEN
-		&& lst->TYPE != PRTCLOSE);
+		&& lst->type != PIPE
+		&& lst->type != OR
+		&& lst->type != AND
+		&& lst->type != PRTOPEN
+		&& lst->type != PRTCLOSE);
 }
 
 int	ft_isthatared(t_list *lst)
 {
-	return (lst->TYPE == RDAPP
-		|| lst->TYPE == RDHER
-		|| lst->TYPE == RDIN
-		|| lst->TYPE == RDOUT);
+	return (lst->type == RDAPP
+		|| lst->type == RDHER
+		|| lst->type == RDIN
+		|| lst->type == RDOUT);
 }

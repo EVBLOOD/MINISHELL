@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 01:41:53 by sakllam           #+#    #+#             */
-/*   Updated: 2022/04/25 16:55:25 by sakllam          ###   ########.fr       */
+/*   Updated: 2022/04/26 02:20:51 by foulare          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ char	*ft_isacmd(char *cmd, char **env)
 	node = ft_getenv(env, "PATH=");
 	if (!node)
 		return (NULL);
-	splited = ft_split(&(node[4]), ':');	
+	splited = ft_split(&(node[4]), ':');
 	if (!splited)
 		return (NULL);
 	path = ft_searchandconcat(splited, cmd);
@@ -52,14 +52,15 @@ int	ft_checkexistence(char *line)
 	return (0);
 }
 
-char *ft_alphajoin(char *line, char *path)
+char	*ft_alphajoin(char *line, char *path)
 {
 	int		i;
 	int		j;
-	int		x;
 	char	*ret;
+	int		len;
 
-	ret = (char *)ft_malloc(sizeof(char) * (ft_strlen(line) + ft_strlen(path) + 2));
+	len = ft_strlen(line) + ft_strlen(path) + 2;
+		ret = (char *)ft_malloc(sizeof(char) * len);
 	if (!ret)
 		return (NULL);
 	i = -1;

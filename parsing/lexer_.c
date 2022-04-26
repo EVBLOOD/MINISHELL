@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 00:52:07 by sakllam           #+#    #+#             */
-/*   Updated: 2022/04/25 00:53:28 by sakllam          ###   ########.fr       */
+/*   Updated: 2022/04/26 04:25:19 by foulare          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void	ft_addwords(char **line, int *i, t_list **head)
 		node = ft_setword(*line - *i, *i);
 		if (!node)
 			return ;
-		node->TYPE = WORD;
+		node->type = WORD;
 		node->next = NULL;
 		ft_lstadd_back(head, node);
 		*i = 0;

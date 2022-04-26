@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 01:32:52 by sakllam           #+#    #+#             */
-/*   Updated: 2022/04/25 01:34:38 by sakllam          ###   ########.fr       */
+/*   Updated: 2022/04/26 02:12:17 by foulare          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ char	*ft_replaceandjoin(char **str, char *tojoin)
 
 void	ft_wildmergin(char **str, t_befexec **head)
 {
-	char **names;
-	int	i;
+	char	**names;
+	int		i;
 
 	names = ft_wildcard_(*str);
 	i = 0;
@@ -69,7 +69,7 @@ int	ft_countstars(char *str, int wild)
 	return (count + wild);
 }
 
-void ft_varmerging(t_list *list, char **str, int *wild, t_befexec **head)
+void	ft_varmerging(t_list *list, char **str, int *wild, t_befexec **head)
 {
 	int	i;
 

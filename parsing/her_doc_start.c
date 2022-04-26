@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 01:10:12 by sakllam           #+#    #+#             */
-/*   Updated: 2022/04/25 01:10:49 by sakllam          ###   ########.fr       */
+/*   Updated: 2022/04/26 04:22:35 by foulare          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,12 @@ int	ft_herdoccreating(t_list **lst)
 	lem = ft_strdup("");
 	tmp = *lst;
 	*lst = (*lst)->next;
-	while (*lst && ((*lst)->TYPE == WILD || (*lst)->TYPE == WORD || (*lst)->TYPE == SQ
-			|| (*lst)->TYPE == DQ))
+	while (*lst && ((*lst)->type == WILD
+			|| (*lst)->type == WORD || (*lst)->type == SQ
+			|| (*lst)->type == DQ))
 	{
 		if (ft_herdocexptype(lst, tmp, &join))
-				return (0);
+			return (0);
 		x = lem;
 		lem = ft_strjoin(lem, join);
 		*lst = (*lst)->next;

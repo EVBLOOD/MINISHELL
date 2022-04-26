@@ -1,13 +1,13 @@
 /* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   herdoc_work.c                                      :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/25 01:45:08 by sakllam           #+#    #+#             */
-/*   Updated: 2022/04/25 01:46:14 by sakllam          ###   ########.fr       */
-/*                                                                            */
+/*																			  */
+/*														  :::	   ::::::::   */
+/*	 herdoc_work.c										:+:		 :+:	:+:   */
+/*													  +:+ +:+		  +:+	  */
+/*	 By: sakllam <sakllam@student.42.fr>			+#+  +:+	   +#+		  */
+/*												  +#+#+#+#+#+	+#+			  */
+/*	 Created: 2022/04/25 01:45:08 by sakllam		   #+#	  #+#			  */
+/*	 Updated: 2022/04/25 01:46:14 by sakllam		  ###	########.fr		  */
+/*																			  */
 /* ************************************************************************** */
 
 #include "../../mini_shell.h"
@@ -26,11 +26,14 @@ char	*herexchange(char *var, char **env)
 		return (tmp);
 	}
 	while (env[++i])
-		if (!ft_strncmp(env[i], var, ft_strlen(var)) && env[i][ft_strlen(var)] == '=')
+	{
+		if (!ft_strncmp(env[i], var, ft_strlen(var))
+			&& env[i][ft_strlen(var)] == '=')
 		{
 			found = 1;
-			break;
+			break ;
 		}
+	}
 	if (!found)
 		tmp = ft_strdup("");
 	else
@@ -54,13 +57,12 @@ void	ft_readandread(int fd, int ret, char *c, char *var)
 
 void	getvar(int her, int fd, char **env, char *c)
 {
-    char	*value;
+	char	*value;
 	int		ret;
 	char	var[1000000];
 
-    
 	var[0] = '\0';
-    ret = read(fd, c, 1);
+	ret = read(fd, c, 1);
 	if (ft_isdigit(*c) || *c == '?')
 	{
 		var[0] = *c;
@@ -77,23 +79,23 @@ void	getvar(int her, int fd, char **env, char *c)
 
 char	*herdoc(int fd, char **env, char *name)
 {
-    char	*newname;
-    int		her;
-    int		ret;
-    char	c;
-    
+	char	*newname;
+	int		her;
+	int		ret;
+	char	c;
+
 	newname = create_filename(name);
-    her = open(newname, O_CREAT | O_WRONLY | O_TRUNC, 00644);
-    if (her < 0)
-       return (NULL);
-    ret = read(fd, &c, 1);
-    while (ret > 0)
-    {
-        while (c == '$')
-            getvar(her, fd, env, &c);
-        write (her, &c, 1);
-        ret = read(fd, &c, 1);
-    }
+	her = open(newname, O_CREAT | O_WRONLY | O_TRUNC, 00644);
+	if (her < 0)
+		return (NULL);
+	ret = read(fd, &c, 1);
+	while (ret > 0)
+	{
+		while (c == '$')
+			getvar(her, fd, env, &c);
+		write (her, &c, 1);
+		ret = read(fd, &c, 1);
+	}
 	close (her);
-    return (newname);
+	return (newname);
 }

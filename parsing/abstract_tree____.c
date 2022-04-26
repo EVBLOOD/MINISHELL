@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 01:25:11 by sakllam           #+#    #+#             */
-/*   Updated: 2022/04/25 21:42:44 by sakllam          ###   ########.fr       */
+/*   Updated: 2022/04/26 00:22:47 by foulare          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_tree	*redirections(t_list **parsresult, t_list *end)
 	tmp = (*parsresult);
 	next = ft_firstredr(*parsresult, end);
 	node = ft_malloc(sizeof(t_tree));
-	if (next->TYPE == RDHER)
+	if (next->type == RDHER)
 	{
 		node->elements = ft_malloc(sizeof(t_list *) * 2);
 		if (ft_protrctionone(node))
@@ -33,7 +33,7 @@ t_tree	*redirections(t_list **parsresult, t_list *end)
 	node->redirections = noderedirections(*parsresult, end);
 	if (ft_protrctiontwo(node))
 		return (NULL);
-	node->type = next->TYPE;
+	node->type = next->type;
 	redtmp = ft_nextalpha(parsresult, end);
 	node->right = ft_abs(&tmp, next);
 	node->left = ft_abs(redtmp, end);
@@ -42,7 +42,7 @@ t_tree	*redirections(t_list **parsresult, t_list *end)
 
 int	sqpspaces(t_list **parsresult, t_list *end)
 {
-	while ((*parsresult) && (*parsresult)->TYPE == SPACES)
+	while ((*parsresult) && (*parsresult)->type == SPACES)
 		(*parsresult) = (*parsresult)->next;
 	if (!(*parsresult) || (*parsresult) == end)
 		return (0);
@@ -70,7 +70,7 @@ t_tree	*words(t_list **parsresult, t_list *end)
 	if (!node->elements)
 		return (NULL);
 	node->type = LIST;
-	while (*parsresult != end && isitexpandable((*parsresult)->TYPE))
+	while (*parsresult != end && isitexpandable((*parsresult)->type))
 	{
 		if ((*parsresult)->sqp)
 			node->elements[++i] = *parsresult;
@@ -89,7 +89,7 @@ t_tree	*wordsandstuf(t_list **parsresult, t_list *end)
 	node = NULL;
 	if (!sqpspaces(parsresult, end))
 		return (NULL);
-	if ((*parsresult)->TYPE == PRTCLOSE || (*parsresult)->TYPE == PRTOPEN)
+	if ((*parsresult)->type == PRTCLOSE || (*parsresult)->type == PRTOPEN)
 		node = ft_abs(&((*parsresult)->next), end);
 	else
 		node = words(parsresult, end);

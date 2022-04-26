@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 02:09:42 by sakllam           #+#    #+#             */
-/*   Updated: 2022/04/25 22:15:58 by sakllam          ###   ########.fr       */
+/*   Updated: 2022/04/26 01:35:05 by foulare          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,13 +71,13 @@ int	ft_executebuiledin(char **command, char ***env)
 	return (g_exec.returnvalue);
 }
 
-void sig_restore(void)
+void	sig_restore(void)
 {
 	if (signal(SIGINT, SIG_DFL) == SIG_ERR || \
 		signal(SIGQUIT, SIG_DFL) == SIG_ERR || \
 		signal(SIGTSTP, SIG_DFL) == SIG_ERR)
-		{
-			write(2, "sig error\n", 8);
-			exit(1);
-		}
+	{
+		write(2, "sig error\n", 8);
+		exit(1);
+	}
 }

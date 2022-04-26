@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:55:05 by sakllam           #+#    #+#             */
-/*   Updated: 2022/04/25 21:47:41 by sakllam          ###   ########.fr       */
+/*   Updated: 2022/04/26 03:26:29 by foulare          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ int	oldpwd(char **env)
 	char	*tmp;
 	char	**de;
 
-
 	tmp = ft_getenv(env, "PWD=");
 	var = "OLDPWD=";
 	if (!tmp)
@@ -60,7 +59,6 @@ int	oldpwd(char **env)
 		return (1);
 	return (0);
 }
-
 
 int	newpwd(char **env)
 {
@@ -96,8 +94,7 @@ int	cding(char **env)
 
 int	ft_cd(char *dest, char **env)
 {
-	char *user;
-	char *path;
+	char	*path;
 
 	if (!dest)
 	{

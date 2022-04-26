@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 01:52:24 by sakllam           #+#    #+#             */
-/*   Updated: 2022/04/25 01:53:20 by sakllam          ###   ########.fr       */
+/*   Updated: 2022/04/26 02:23:24 by foulare          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	normsplitvars(char const **s, int *spaces)
 	(*s)++;
 	*spaces = 1;
 }
+
 void	normsplitvarstwo(int *i, int *spaces)
 {
 	(*i)++;

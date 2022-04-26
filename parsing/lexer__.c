@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 00:54:47 by sakllam           #+#    #+#             */
-/*   Updated: 2022/04/25 00:55:42 by sakllam          ###   ########.fr       */
+/*   Updated: 2022/04/26 04:26:03 by foulare          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,11 @@ void	ft_addsnglordbl(char **line, int *i, t_list **head)
 		node = ft_setword(*line - *i, *i);
 		if (!node)
 			return ;
-		node->TYPE = check_type_one(*(*line - 1), *i);
+		node->type = check_type_one(*(*line - 1), *i);
 		node->next = NULL;
 		ft_lstadd_back(head, node);
-		if (node->TYPE == RDHER || node->TYPE == RDIN
-			|| node->TYPE == RDOUT || node->TYPE == RDAPP)
+		if (node->type == RDHER || node->type == RDIN
+			|| node->type == RDOUT || node->type == RDAPP)
 			ft_notavar(line, head);
 		*i = 0;
 	}
@@ -88,6 +88,6 @@ void	ft_navigatedoubles(char **line, int *i)
 		(*i)++;
 		(*line)++;
 		if (*(*line - 1) != **line)
-			break;
+			break ;
 	}
 }

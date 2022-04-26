@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 02:02:12 by sakllam           #+#    #+#             */
-/*   Updated: 2022/04/25 23:23:34 by sakllam          ###   ########.fr       */
+/*   Updated: 2022/04/26 02:29:34 by foulare          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	ft_addshlvl(char **env, int x)
 	i = -1;
 	while ((*env)[++i])
 		if ((*env)[i] == '=')
-			break;
+			break ;
 	i++;
 	nb = ft_atoi(&(*env)[i]) + x;
 	char_nb = ft_itoab(nb);
@@ -50,7 +50,7 @@ void	ft_addshlvl(char **env, int x)
 	(*env) = response;
 }
 
-void	ft_SHLVL(char ***env, int x)
+void	ft_shlvl(char ***env, int x)
 {
 	int	i;
 	int	found;
@@ -58,29 +58,17 @@ void	ft_SHLVL(char ***env, int x)
 	i = -1;
 	found = 0;
 	while ((*env)[++i])
+	{
 		if (!ft_strncmp((*env)[i], "SHLVL=", 6))
 		{
 			found = 1;
-			break;
+			break ;
 		}
+	}
 	if (!found)
 		*env = ft_addtoenv((*env), "SHLVL=1");
 	else
 		ft_addshlvl(&((*env)[i]), x);
-}
-
-char	**ft_hackers(void)
-{
-	char	**newenv;
-	char	*pathtmp;
-
-	pathtmp = "PATH=/Users/sakllam/goinfre/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki";
-	newenv = malloc(2 * sizeof(char *));
-	if (!newenv)
-		return (NULL);
-	newenv[0] = ft_strdupb(pathtmp);
-	newenv[1] = NULL;
-	return (newenv);
 }
 
 char	**ft_cloneenv(char **env)
@@ -98,6 +86,6 @@ char	**ft_cloneenv(char **env)
 		i++;
 	}
 	newenv[i] = NULL;
-	ft_SHLVL(&newenv, 1);
+	ft_shlvl(&newenv, 1);
 	return (newenv);
 }

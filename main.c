@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 02:38:11 by sakllam           #+#    #+#             */
-/*   Updated: 2022/04/25 22:18:13 by sakllam          ###   ########.fr       */
+/*   Updated: 2022/04/26 01:31:19 by foulare          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,21 @@
 
 t_globale	g_exec;
 
-void handle(int sig)
+void	handle(int sig)
 {
 	if (sig == SIGINT)
 	{
 		write(1, "\n", 1);
-		if(g_exec.isexecuting)
+		if (g_exec.isexecuting)
 			return ;
-        rl_replace_line("", 0);
+		rl_replace_line("", 0);
 		rl_on_new_line();
-        rl_redisplay();
+		rl_redisplay();
 		g_exec.returnvalue = 1;
 	}
 }
 
-void ft_signal(void)
+void	ft_signal(void)
 {
 	if (signal(SIGINT, handle) == SIG_ERR || \
 	signal(SIGQUIT, SIG_IGN) == SIG_ERR || \
@@ -65,6 +65,9 @@ int	main(int argc, char *argv[], char *env[])
 	char	**newenv;
 	int		io[2];
 
+	(void)argv;
+	(void)argc;
+	tree = NULL;
 	start(&newenv, io, env);
 	while (1)
 	{

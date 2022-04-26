@@ -6,28 +6,32 @@
 #    By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/25 17:14:37 by sakllam           #+#    #+#              #
-#    Updated: 2022/04/25 17:14:40 by sakllam          ###   ########.fr        #
+#    Updated: 2022/04/26 02:43:48 by foulare          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME= ./minishell
-SRCS= execution/exec_tree.c   parsing/abstarct_tree.c   parsing/parsing.c  parsing/t_list.c \
-      parsing/ft_her_doc.c  parsing/redirections.c parsing/trim.c \
-	  execution/free.c parsing/lexer.c parsing/syntax_analyser.c  main.c \
-	  execution/builtin/exit.c  execution/execution_utils/before_exec.c \
-	  execution/builtin/ft_cd.c execution/execution_utils/doubleexp.cexecution/built in/ft_echo.c \
-	  execution/execution_utils/exec_utils.c \
-	  execution/builtin/ft_env.c execution/execution_utils/expending.c \
-	  execution/builtin/ft_export.c  execution/execution_utils/get_path_utils.c \
-	  execution/builtin/ft_pwd.c execution/execution_utils/ismatch.c \
-	  execution/builtin/ft_unset.c execution/execution_utils/pipe.c \
-	  execution/builtin/wild.c  execution/execution_utils/praparing_execution.c \
-	  execution/env mnpl/clone_env.c  execution/execution_utils/redir.c \
-	  execution/execution_utils/befoc_fun.c  execution/execution_utils/strjoin_split.c \
-	  execution/execution_utils/before_exec copy.c execution/execution_utils/varexp.c \
+SRCS= 	execution/exec_tree.c        parsing/abstract_tree___.c   parsing/lexer__.c            parsing/syntax_analyser.c \
+		execution/exec_tree_.c       parsing/abstract_tree____.c  parsing/lexer___.c           parsing/syntax_analyser_.c \
+		execution/exec_tree__.c      parsing/abstract_tree_____.c parsing/lst_functions.c      parsing/syntax_analyser__.c \
+		execution/exec_tree___.c     parsing/her_doc_start.c      parsing/parsing.c            parsing/syntax_analyser___.c \
+		execution/exec_tree____.c    parsing/herdocstpone.c       parsing/redesin.c            parsing/trim.c \
+		parsing/abstract_tree.c      parsing/lexer.c              parsing/redesin_.c  execution/envmanup/clone_env.c\
+		parsing/abstract_tree_.c     parsing/lexer_.c             parsing/redesin__.c \
+		execution/builtin/cd.c       execution/envmanup/clone_env_.c          execution/execution_utils/exec_utils_.c \
+		execution/builtin/echo.c     execution/envmanup/clone_env__.c         execution/execution_utils/herdoc_work.c \
+		execution/builtin/env.c      execution/execution_utils/before_exec.c   execution/execution_utils/ismatch.c \
+		execution/builtin/exit.c     execution/execution_utils/before_exec_.c  execution/execution_utils/ismatch_.c \
+		execution/builtin/export.c   execution/execution_utils/before_exec__.c execution/execution_utils/split_join.c execution/builtin/pwd.c\
+  		execution/execution_utils/before_func.c   execution/execution_utils/variablesexp.c \
+		execution/builtin/unset.c    execution/execution_utils/doubleexp.c     execution/execution_utils/variablesexp_.c \
+		execution/builtin/wild.c      execution/execution_utils/doubleexp_.c execution/builtin/display_export.c\
+		execution/execution_utils/exec_utils.c \
+		main.c       main_utils.c trush.c\
 
 CFLAGS := -Wall -Wextra -Werror
-FLAGS := -lreadline -L `brew --prefix readline`/lib -I `brew --prefix readline`/include -lncurses
+LFLAGS := -L/goinfre/foulare/.brew/opt/readline/lib
+IFLAGS := -I/goinfre/foulare/.brew/opt/readline/include
 
 OBJS :=$(SRCS:.c=.o)
 
@@ -36,10 +40,10 @@ OBJS :=$(SRCS:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	gcc $(CFLAGS) $^ -o $@ $(FLAGS)
+	gcc $(CFLAGS) $^ -o $@ $(FLAGS) -lreadline -lncurses $(LFLAGS)
 
 %.o: %.c mini_shell.h 
-	gcc $(CFLAGS) -c $<
+	gcc $(CFLAGS) $(IFLAGS) -c $< -o $@
 
 clean:
 	rm -f $(OBJS)

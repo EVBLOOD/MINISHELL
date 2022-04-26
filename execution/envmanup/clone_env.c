@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 01:57:43 by sakllam           #+#    #+#             */
-/*   Updated: 2022/04/25 23:27:31 by sakllam          ###   ########.fr       */
+/*   Updated: 2022/04/26 02:26:03 by foulare          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	*ft_strdup(const char *s)
 {
 	int		i;
 	char	*p;
-	
+
 	if (!s)
 		return (NULL);
 	i = 0;
@@ -48,7 +48,7 @@ char	*ft_strdupb(const char *s)
 {
 	int		i;
 	char	*p;
-	
+
 	if (!s)
 		return (NULL);
 	i = 0;
@@ -69,7 +69,7 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	int				i;
 	unsigned char	*st1;
 	unsigned char	*st2;
-	
+
 	i = 0;
 	st1 = (unsigned char *) s1;
 	st2 = (unsigned char *) s2;
@@ -84,8 +84,8 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 
 char	**ft_addtoenv(char **env, char *element)
 {
-	char **newenv;
-	int	i;
+	char	**newenv;
+	int		i;
 
 	i = 0;
 	newenv = malloc(sizeof(char *) * (ft_envsize(env) + 1));

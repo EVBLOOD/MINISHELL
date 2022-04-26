@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 02:22:56 by sakllam           #+#    #+#             */
-/*   Updated: 2022/04/25 18:28:20 by sakllam          ###   ########.fr       */
+/*   Updated: 2022/04/26 01:36:39 by foulare          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,17 +47,15 @@ int	andfunction(t_tree *tree, char ***env)
 	run(tree->left, env);
 	if (g_exec.returnvalue == 0)
 		return (run(tree->right, env));
-	return (g_exec.returnvalue); 
+	return (g_exec.returnvalue);
 }
 
 int	orfunction(t_tree *tree, char ***env)
 {
-	int	ret;
-
 	run(tree->left, env);
 	if (g_exec.returnvalue != 0)
 		return (run(tree->right, env));
-	return (g_exec.returnvalue); 
+	return (g_exec.returnvalue);
 }
 
 void	leftpipefunction(t_tree *tree, char ***env, int *pfd)

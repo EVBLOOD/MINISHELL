@@ -48,14 +48,14 @@ int	ft_quotes(t_list *lst)
 
 	x = ft_getnext(lst);
 	okey = 0;
-	if (lst->TYPE == DQ)
+	if (lst->type == DQ)
 	{
 		if (!ft_checksforqoutes(lst->splited, 34))
 			okey = 1;
 		if (x == PRTOPEN)
 			okey = 2;
 	}
-	if (lst->TYPE == SQ)
+	if (lst->type == SQ)
 	{
 		if (!ft_checksforqoutes(lst->splited, 39) || x == PRTOPEN)
 			okey = 1;
@@ -71,7 +71,7 @@ int	ft_word(t_list *lst)
 {
 	int	x;
 
-	if (lst->TYPE == WORD)
+	if (lst->type == WORD)
 	{
 		x = ft_getnext(lst);
 		if (x == PRTOPEN)

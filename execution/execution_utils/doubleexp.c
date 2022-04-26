@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 01:38:22 by sakllam           #+#    #+#             */
-/*   Updated: 2022/04/25 22:52:31 by sakllam          ###   ########.fr       */
+/*   Updated: 2022/04/26 02:09:42 by foulare          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	i = 0;
 	if (!s)
 		return (NULL);
-	if (ft_strlen(s + start) < len)
+	if (ft_strlen(s + start) < (int) len)
 		p = (char *) ft_malloc((ft_strlen(s + start) + 1) * sizeof(char));
 	else
 		p = (char *) ft_malloc(((int) len + 1) * sizeof(char));
 	if (!p)
 		return (NULL);
-	while (i < (int) len && s[i + start] && !(start >= ft_strlen(s)))
+	while (i < (int) len && s[i + start] && !((int)start >= ft_strlen(s)))
 	{
 		p[i] = s[i + start];
 		i++;
@@ -50,18 +50,21 @@ void	ft_expandvariablesdq(char **var, char **env)
 		return ;
 	}
 	while (env && env[++i])
-		if (!ft_strncmp(env[i], *var, ft_strlen(*var)) && env[i][ft_strlen(*var)] == '=')
+	{
+		if (!ft_strncmp(env[i], *var, ft_strlen(*var))
+			&& env[i][ft_strlen(*var)] == '=')
 		{
 			found = 1;
-			break;
+			break ;
 		}
+	}
 	if (!found)
 		*var = ft_strdup("");
 	else
 		*var = ft_strdup(&env[i][ft_strlen(*var) + 1]);
 }
 
-int varlenghcounting(t_list *list, char **env, int *i)
+int	varlenghcounting(t_list *list, char **env, int *i)
 {
 	char	*var;
 	int		j;
@@ -74,8 +77,8 @@ int varlenghcounting(t_list *list, char **env, int *i)
 	else
 	{
 		j = 1;
-		while (list->splited[(*i) + j] &&
-			!ft_varvalidating(list->splited[(*i) + j]))
+		while (list->splited[(*i) + j]
+			&& !ft_varvalidating(list->splited[(*i) + j]))
 			j++;
 		var = ft_substr(list->splited, (*i) + 1, j - 1);
 	}
@@ -91,16 +94,14 @@ int varlenghcounting(t_list *list, char **env, int *i)
 int	ft_expand_dqcount(t_list *list, char **env)
 {
 	int		i;
-	int		j;
 	int		count;
-	char	*var;
 
 	i = -1;
 	count = 0;
 	while (list->splited[++i])
 	{
 		if (ft_strchr(list->splited[i], "$"))
-			count +=  varlenghcounting(list, env, &i);
+			count += varlenghcounting(list, env, &i);
 		else
 			count++;
 	}

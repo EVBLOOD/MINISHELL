@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 02:11:38 by sakllam           #+#    #+#             */
-/*   Updated: 2022/04/25 21:43:57 by sakllam          ###   ########.fr       */
+/*   Updated: 2022/04/26 01:35:44 by foulare          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	ft_simplecmd(char ***env, t_tree *tree)
 		if (!ft_strchr(47, command[0]))
 			path = ft_isacmd(command[0], *env);
 		else
-			path =  command[0];
+			path = command[0];
 		soisit(path, command);
 		soexecv(path, command, *env);
 	}

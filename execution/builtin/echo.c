@@ -6,15 +6,15 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:55:52 by sakllam           #+#    #+#             */
-/*   Updated: 2022/04/25 22:01:45 by sakllam          ###   ########.fr       */
+/*   Updated: 2022/04/26 04:06:22 by foulare          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../mini_shell.h"
 
-int ft_checkflag(char *str)
+int	ft_checkflag(char *str)
 {
-	int i;
+	int	i;
 
 	i = 1;
 	if (str[0] != '-')
@@ -31,13 +31,13 @@ int ft_checkflag(char *str)
 int	ft_echo(char **line)
 {
 	int	i;
-	int flag;
-	flag = 1;
+	int	flag;
 
-	while(line[flag] && !ft_checkflag(line[flag]))
+	flag = 1;
+	while (line[flag] && !ft_checkflag(line[flag]))
 		flag++;
 	i = flag;
-	while(line && line[i])
+	while (line && line[i])
 	{
 		if (i != flag)
 			write(1, " ", 1);

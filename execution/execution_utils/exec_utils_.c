@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 01:43:41 by sakllam           #+#    #+#             */
-/*   Updated: 2022/04/25 01:44:52 by sakllam          ###   ########.fr       */
+/*   Updated: 2022/04/26 02:21:13 by foulare          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char	*ft_searchandconcat(char **splited, char *cmd)
 	{
 		path = ft_match(splited[i], cmd);
 		if (path)
-			break;
+			break ;
 		i++;
 	}
 	return (path);

@@ -6,13 +6,13 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:54:21 by sakllam           #+#    #+#             */
-/*   Updated: 2022/04/25 15:54:53 by sakllam          ###   ########.fr       */
+/*   Updated: 2022/04/26 04:08:29 by foulare          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../mini_shell.h"
 
-int isnum(char c)
+int	isnum(char c)
 {
 	return (c >= '0' && c <= '9');
 }
@@ -43,16 +43,17 @@ long long	ft_atoi_long(const char *str)
 	return (result * n);
 }
 
-int check_error_exit(char **command)
+int	check_error_exit(char **command)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	while (command[0][++i])
 	{
 		if ((command[0][0] == '-' || command[0][0] == '+'))
 			i++;
-		if (!isnum(command[0][i]) || ft_atoi_long(command[0]) > 9223372036854775807 
+		if (!isnum(command[0][i]) ||
+			ft_atoi_long(command[0]) > 9223372036854775807
 			|| ft_atoi_long(command[0]) < (-922337203685477580 - 1))
 		{
 			write (1, "bash: exit: ", 12);

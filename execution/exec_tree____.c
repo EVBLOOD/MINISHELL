@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 02:34:52 by sakllam           #+#    #+#             */
-/*   Updated: 2022/04/25 22:13:08 by sakllam          ###   ########.fr       */
+/*   Updated: 2022/04/26 01:37:44 by foulare          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	redirectionsout(t_tree *tree, char ***env)
 		g_exec.returnvalue = 1;
 		return ;
 	}
-	fd = open(filename[0], O_RDWR | O_CREAT | O_TRUNC, 0644);;
+	fd = open(filename[0], O_RDWR | O_CREAT | O_TRUNC, 0644);
 	if (fd < 0)
 	{
 		g_exec.returnvalue = 1;
@@ -80,15 +80,10 @@ int	redirectionsfunction(t_tree *tree, char ***env)
 
 int	run(t_tree *tree, char ***env)
 {
-	int	ret;
 	int	pfd[2];
-	int	right_pid;
-	int	status;
-	int	exit_st;
-	char	**filename;
 
 	if (!tree)
-		return 0;
+		return (0);
 	if (tree->type == LIST)
 		return (ft_simplecmd(env, tree));
 	if (tree->type == AND)

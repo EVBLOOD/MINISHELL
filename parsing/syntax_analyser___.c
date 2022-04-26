@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 01:07:02 by sakllam           #+#    #+#             */
-/*   Updated: 2022/04/25 01:07:16 by sakllam          ###   ########.fr       */
+/*   Updated: 2022/04/26 00:26:38 by foulare          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ int	ft_syntaxanalysis(t_list *parsresult)
 {
 	int	prth;
 	int	start;
-	t_list	*tmp;
 
 	start = 1;
 	prth = 0;

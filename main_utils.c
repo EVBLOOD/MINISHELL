@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 02:40:23 by sakllam           #+#    #+#             */
-/*   Updated: 2022/04/25 22:48:54 by sakllam          ###   ########.fr       */
+/*   Updated: 2022/04/26 04:10:13 by foulare          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	save_io(int io[2])
 		perror(NULL);
 }
 
-int ft_putchar(int c)
+int	ft_putchar(int c)
 {
 	write(1, &c, 1);
 	return (1);
@@ -37,7 +37,7 @@ void	itsnull(char **newenv)
 	char		*sr_cap;
 
 	sr_cap = tgetstr("sr", NULL);
-	tputs(sr_cap, 0,  ft_putchar);
+	tputs(sr_cap, 0, ft_putchar);
 	printf("$> exit\n");
 	cleartrush();
 	free(newenv);

@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 02:25:39 by sakllam           #+#    #+#             */
-/*   Updated: 2022/04/25 21:43:15 by sakllam          ###   ########.fr       */
+/*   Updated: 2022/04/26 01:36:58 by foulare          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void	ft_apndredirections(t_tree *tree, char ***env)
 
 int	ft_openherdoc(t_tree *tree, char **env)
 {
-	int	fd;
+	int		fd;
 	char	*name;
 
 	fd = open(tree->elements[0]->splited, O_RDONLY);
@@ -91,7 +91,6 @@ int	ft_openherdoc(t_tree *tree, char **env)
 
 void	redirectionherdoc(t_tree *tree, char ***env)
 {
-	char	**filename;
 	int		fd;
 
 	fd = ft_openherdoc(tree, *env);

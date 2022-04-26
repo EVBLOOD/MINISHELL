@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 02:49:49 by sakllam           #+#    #+#             */
-/*   Updated: 2022/04/25 15:54:09 by sakllam          ###   ########.fr       */
+/*   Updated: 2022/04/26 04:04:31 by foulare          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,19 @@ int	ft_nbfiles(void)
 	dir = opendir(".");
 	if (!dir)
 		return (0);
-	while((ret = readdir(dir)) != NULL)
+	ret = readdir(dir);
+	while (ret != NULL)
 	{
-		if ((ret->d_type == DT_DIR || ret->d_type == DT_REG) && ret->d_name[0] != '.')
+		if ((ret->d_type == DT_DIR || ret->d_type == DT_REG)
+			&& ret->d_name[0] != '.')
 			i++;
+		ret = readdir(dir);
 	}
 	closedir(dir);
 	return (i);
 }
 
-int		ft_doublesize(char **names)
+int	ft_doublesize(char **names)
 {
 	int	i;
 
@@ -63,10 +66,15 @@ char	**ft_simplewild(void)
 	names = ft_malloc(sizeof(char *) * ft_nbfiles());
 	dir = opendir(".");
 	if (!dir)
-		return(NULL);
-	while((ret = readdir(dir)) != NULL)
-		if ((ret->d_type == DT_DIR || ret->d_type == DT_REG) && ret->d_name[0] != '.')
+		return (NULL);
+	ret = readdir(dir);
+	while (ret != NULL)
+	{
+		if ((ret->d_type == DT_DIR || ret->d_type == DT_REG)
+			&& ret->d_name[0] != '.')
 			names[++i] = ft_strdup(ret->d_name);
+		ret = readdir(dir);
+	}
 	names[++i] = NULL;
 	closedir(dir);
 	return (names);
@@ -82,10 +90,13 @@ int	ft_nbfilestwo(char *pattren)
 	dir = opendir(".");
 	if (!dir)
 		return (0);
-	while((ret = readdir(dir)) != NULL)
+	ret = readdir(dir);
+	while (ret != NULL)
 	{
-		if ((ret->d_type == DT_DIR || ret->d_type == DT_REG) && ret->d_name[0] != '.' && ft_ismatch(ret->d_name, pattren))
+		if ((ret->d_type == DT_DIR || ret->d_type == DT_REG)
+			&& ret->d_name[0] != '.' && ft_ismatch(ret->d_name, pattren))
 			i++;
+		ret = readdir(dir);
 	}
 	closedir(dir);
 	return (i);
@@ -102,15 +113,19 @@ char	**ft_wildrgex(char *pattern)
 	names = ft_malloc(sizeof(char *) * ft_nbfilestwo(pattern));
 	dir = opendir(".");
 	if (!dir)
-		return(NULL);
-	while((ret = readdir(dir)) != NULL)
-		if ((ret->d_type == DT_DIR || ret->d_type == DT_REG) && ret->d_name[0] != '.' && ft_ismatch(ret->d_name, pattern))
+		return (NULL);
+	ret = readdir(dir);
+	while (ret != NULL)
+	{
+		if ((ret->d_type == DT_DIR || ret->d_type == DT_REG)
+			&& ret->d_name[0] != '.' && ft_ismatch(ret->d_name, pattern))
 			names[++i] = ft_strdup(ret->d_name);
+		ret = readdir(dir);
+	}
 	names[++i] = NULL;
 	closedir(dir);
 	return (names);
 }
-
 
 char	**ft_wildcard_(char *pattern)
 {

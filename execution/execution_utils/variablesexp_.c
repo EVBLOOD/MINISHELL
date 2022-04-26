@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 01:55:02 by sakllam           #+#    #+#             */
-/*   Updated: 2022/04/25 22:50:35 by sakllam          ###   ########.fr       */
+/*   Updated: 2022/04/26 02:23:15 by foulare          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,10 @@ void	*ft_malloc(size_t size)
 	if (!ptr)
 		return (NULL);
 	ft_addtotrush(ptr, &(g_exec.trush), 1);
-	return(ptr);
+	return (ptr);
 }
 
-char **ft_varreturn(void)
+char	**ft_varreturn(void)
 {
 	char	**var;
 

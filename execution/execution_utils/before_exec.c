@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 01:30:51 by sakllam           #+#    #+#             */
-/*   Updated: 2022/04/25 22:56:12 by sakllam          ###   ########.fr       */
+/*   Updated: 2022/04/26 02:11:32 by foulare          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	*ft_expand_sq(t_list *list)
 		i++;
 	}
 	str[i - 1] = '\0';
-	return(str);
+	return (str);
 }
 
 t_befexec	*ft_createnode(char *str)
@@ -52,6 +52,7 @@ char	*ft_replaceexpand_dq(t_list **list, char **env)
 char	*ft_replaceexpand_sq(t_list **list)
 {
 	char	*str;
+
 	str = ft_expand_sq(*list);
 	return (str);
 }
@@ -62,19 +63,19 @@ void	ft_replaceall(t_list **list, char **env)
 	char	*str;
 
 	i = 0;
-	while (list[i] && (list[i]->TYPE == SPACES || !list[i]->sqp))
+	while (list[i] && (list[i]->type == SPACES || !list[i]->sqp))
 		i++;
 	while (list[i])
 	{
-		if (list[i]->TYPE == VARIABLE && env)
+		if (list[i]->type == VARIABLE && env)
 			list[i]->expanded = ft_expandvariables(list[i], env);
-		if (list[i]->TYPE == SQ)
+		if (list[i]->type == SQ)
 			list[i]->splited = ft_replaceexpand_sq(&(list[i]));
-		if (list[i]->TYPE == DQ)
+		if (list[i]->type == DQ)
 			list[i]->splited = ft_replaceexpand_dq(&(list[i]), env);
-		if (list[i]->TYPE == WORD)
+		if (list[i]->type == WORD)
 		{
-			str = list[i]->splited;	
+			str = list[i]->splited;
 			list[i]->splited = ft_strdup(list[i]->splited);
 		}
 		i++;

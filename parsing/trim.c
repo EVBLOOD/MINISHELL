@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 17:49:28 by sakllam           #+#    #+#             */
-/*   Updated: 2022/04/24 21:17:39 by sakllam          ###   ########.fr       */
+/*   Updated: 2022/04/26 00:29:19 by foulare          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 		return (NULL);
 	countf = ft_front(s1, set);
 	countb = ft_end(s1, set);
-	if ((unsigned int) countb == ft_strlen(s1))
+	if ((unsigned int) countb == (unsigned int)ft_strlen(s1))
 		return (ft_error());
 	ret = ft_malloc(((ft_strlen(s1) - (countb + countf)) + 1));
 	if (!ret)

@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 01:22:48 by sakllam           #+#    #+#             */
-/*   Updated: 2022/04/25 01:24:02 by sakllam          ###   ########.fr       */
+/*   Updated: 2022/04/26 04:21:31 by foulare          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_tree	*ft_operatorsnode(t_list **parsresult, t_list *end)
 	node = ft_malloc(sizeof(t_tree));
 	if (!node)
 		return (NULL);
-	node->type =  next->TYPE;
+	node->type = next->type;
 	node->right = ft_abs(&(next->next), end);
 	node->left = ft_abs(&tmp, next);
 	return (node);
@@ -42,17 +42,18 @@ t_tree	*ft_pipes(t_list **parsresult, t_list *end)
 	node = ft_malloc(sizeof(t_tree));
 	if (!node)
 		return (NULL);
-	node->type = next->TYPE;
+	node->type = next->type;
 	node->right = ft_abs(&(next->next), end);
 	node->left = ft_abs(&tmp, next);
 	return (node);
 }
 
-int	redirectionsnormtree(t_list *next, t_tree *node, t_list *end, t_list **parsresult)
+int	redirectionsnormtree(t_list *next, t_tree *node,
+		t_list *end, t_list **parsresult)
 {
 	if (!node)
 		return (1);
-	if (next->TYPE == RDHER)
+	if (next->type == RDHER)
 	{
 		node->elements = ft_malloc(sizeof(t_list *) * 2);
 		if (!node->elements)

@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 01:00:44 by sakllam           #+#    #+#             */
-/*   Updated: 2022/04/25 22:50:14 by sakllam          ###   ########.fr       */
+/*   Updated: 2022/04/26 04:34:29 by foulare          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,12 @@ int	ft_getnext(t_list *corrent)
 {
 	if (corrent->next)
 	{
-		if (corrent->next->TYPE != SPACES)
-			return (corrent->next->TYPE);
+		if (corrent->next->type != SPACES)
+			return (corrent->next->type);
 		else
 		{
 			if (corrent->next->next)
-				return (corrent->next->next->TYPE);
+				return (corrent->next->next->type);
 		}
 	}
 	return (-1);
@@ -60,8 +60,8 @@ int	ft_firstcheck(t_list *lst, int *start)
 {
 	if (*start)
 	{
-		if (lst->TYPE == PRTCLOSE || lst->TYPE == OR
-			|| lst->TYPE == AND || lst->TYPE == PIPE)
+		if (lst->type == PRTCLOSE || lst->type == OR
+			|| lst->type == AND || lst->type == PIPE)
 		{
 			ft_errormsg(lst->splited);
 			return (1);

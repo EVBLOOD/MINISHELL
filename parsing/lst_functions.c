@@ -6,17 +6,17 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 01:16:53 by sakllam           #+#    #+#             */
-/*   Updated: 2022/04/25 01:17:30 by sakllam          ###   ########.fr       */
+/*   Updated: 2022/04/26 04:28:36 by foulare          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../mini_shell.h"
 
-int ft_lstlen(t_list *list)
+int	ft_lstlen(t_list *list)
 {
-	int i;
-	t_list *temp;
-	
+	int		i;
+	t_list	*temp;
+
 	i = 0;
 	temp = list;
 	while (temp)

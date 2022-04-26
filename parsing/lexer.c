@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 00:49:22 by sakllam           #+#    #+#             */
-/*   Updated: 2022/04/25 00:51:06 by sakllam          ###   ########.fr       */
+/*   Updated: 2022/04/26 04:24:49 by foulare          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 int	ft_isspace(char x)
 {
-	if (x == '\t' || x ==  '\n' || x == '\v'
-		|| x == '\f' || x ==   '\r' || x == ' ')
+	if (x == '\t' || x == '\n' || x == '\v'
+		|| x == '\f' || x == '\r' || x == ' ')
 		return (0);
 	return (1);
 }
 
-int check_type_one(char c, int i)
+int	check_type_one(char c, int i)
 {
 	if (c == '|' && i == 1)
 		return (PIPE);
@@ -55,7 +55,7 @@ int	ft_isalpha(int c)
 	return (0);
 }
 
-int check_type_two(char c)
+int	check_type_two(char c)
 {
 	if (c == ')')
 		return (PRTCLOSE);

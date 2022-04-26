@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 00:56:44 by sakllam           #+#    #+#             */
-/*   Updated: 2022/04/25 00:57:41 by sakllam          ###   ########.fr       */
+/*   Updated: 2022/04/26 04:27:05 by foulare          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,14 @@
 int	ft_isdigitvariable(char **line, t_list **head)
 {
 	t_list	*node;
+
 	if (ft_isdigit(**line) || **line == '?')
 	{
 		(*line)++;
 		node = ft_setword(*line - 2, 2);
 		if (!node)
 			return (1);
-		node->TYPE = VARIABLE;
+		node->type = VARIABLE;
 		ft_lstadd_back(head, node);
 		return (1);
 	}
@@ -48,9 +49,9 @@ void	ft_variable(char **line, t_list **head)
 		node = ft_setword(*line - i, i);
 		if (!node)
 			return ;
-		node->TYPE = VARIABLE;
+		node->type = VARIABLE;
 		if (i == 1)
-			node->TYPE = WORD;
+			node->type = WORD;
 		ft_lstadd_back(head, node);
 	}
 }
@@ -66,10 +67,10 @@ void	ft_snglonce(char **line, t_list **head)
 		node = ft_setword(*line, 1);
 		if (!node)
 			return ;
-		node->TYPE = check_type_two(**line);
-		if (node->TYPE == SQ)
+		node->type = check_type_two(**line);
+		if (node->type == SQ)
 			x = ft_qouting(line, &node, 39);
-		else if (node->TYPE == DQ)
+		else if (node->type == DQ)
 			x = ft_qouting(line, &node, 34);
 		(*line)++;
 		if (x)
@@ -82,13 +83,14 @@ void	ft_dealingwithspaces(char **line, int *spaces, t_list **head)
 {
 	t_list	*node;
 
+	(void)line;
 	if (*spaces > 0)
 	{
 		node = ft_malloc(sizeof(t_list));
 		if (!node)
 			return ;
 		node->nb = *spaces;
-		node->TYPE = SPACES;
+		node->type = SPACES;
 		node->sqp = 1;
 		node->next = NULL;
 		ft_lstadd_back(head, node);
@@ -99,7 +101,6 @@ void	ft_dealingwithspaces(char **line, int *spaces, t_list **head)
 t_list	*ft_lexicalanalysis(char *line)
 {
 	t_list	*head;
-	t_list	*node;
 	int		i;
 	int		spaces;
 
