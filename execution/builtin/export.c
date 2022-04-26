@@ -1,13 +1,13 @@
 /* ************************************************************************** */
-/*																			  */
-/*														  :::	   ::::::::   */
-/*	 export.c											:+:		 :+:	:+:   */
-/*													  +:+ +:+		  +:+	  */
-/*	 By: sakllam <sakllam@student.42.fr>			+#+  +:+	   +#+		  */
-/*												  +#+#+#+#+#+	+#+			  */
-/*	 Created: 2022/04/25 15:57:02 by sakllam		   #+#	  #+#			  */
-/*	 Updated: 2022/04/25 22:38:46 by sakllam		  ###	########.fr		  */
-/*																			  */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   export.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/26 04:44:29 by sakllam           #+#    #+#             */
+/*   Updated: 2022/04/26 04:52:23 by sakllam          ###   ########.fr       */
+/*                                                                            */
 /* ************************************************************************** */
 
 #include "../../mini_shell.h"
@@ -82,7 +82,6 @@ int	ft_export(char **cmd, char ***env)
 	int		equal;
 	int		line;
 	int		i;
-	char	*tmp;
 
 	i = 0;
 	if (!cmd[i])
@@ -93,14 +92,7 @@ int	ft_export(char **cmd, char ***env)
 		if (equal != -1)
 		{
 			line = vars_exist(cmd[i], *env, equal);
-			if (line != -1)
-			{
-				tmp = (*env)[line];
-				(*env)[line] = ft_strdupb(cmd[i]);
-				free(tmp);
-			}
-			else
-				*env = vars_notexist(cmd[i], env);
+			ft_cleanexport(line, env, cmd[i]);
 		}
 		else
 			desplayerror(cmd[i]);

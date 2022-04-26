@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 02:11:38 by sakllam           #+#    #+#             */
-/*   Updated: 2022/04/26 01:35:44 by foulare          ###   ########.fr       */
+/*   Updated: 2022/04/26 05:06:23 by sakllam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int	sobuilt(char **command, char ***env)
 		ft_executebuiledin(command, env);
 		return (1);
 	}
+	g_exec.child = 0;
 	return (0);
 }
 

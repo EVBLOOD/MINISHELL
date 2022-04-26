@@ -6,7 +6,7 @@
 #    By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/25 17:14:37 by sakllam           #+#    #+#              #
-#    Updated: 2022/04/26 02:43:48 by foulare          ###   ########.fr        #
+#    Updated: 2022/04/26 05:14:09 by sakllam          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,11 +27,11 @@ SRCS= 	execution/exec_tree.c        parsing/abstract_tree___.c   parsing/lexer__
 		execution/builtin/unset.c    execution/execution_utils/doubleexp.c     execution/execution_utils/variablesexp_.c \
 		execution/builtin/wild.c      execution/execution_utils/doubleexp_.c execution/builtin/display_export.c\
 		execution/execution_utils/exec_utils.c \
-		main.c       main_utils.c trush.c\
+		main.c    parsing/nomore.c  execution/builtin/extra_norm.c      main_utils.c trush.c\
 
-CFLAGS := -Wall -Wextra -Werror
-LFLAGS := -L/goinfre/foulare/.brew/opt/readline/lib
-IFLAGS := -I/goinfre/foulare/.brew/opt/readline/include
+CFLAGS := -g -Wall -Wextra -Werror
+LFLAGS := -L/goinfre/sakllam/.brew/opt/readline/lib
+IFLAGS := -I/goinfre/sakllam/.brew/opt/readline/include
 
 OBJS :=$(SRCS:.c=.o)
 

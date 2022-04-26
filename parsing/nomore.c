@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pwd.c                                              :+:      :+:    :+:   */
+/*   nomore.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/25 15:57:57 by sakllam           #+#    #+#             */
-/*   Updated: 2022/04/26 04:53:14 by sakllam          ###   ########.fr       */
+/*   Created: 2022/04/26 05:00:43 by sakllam           #+#    #+#             */
+/*   Updated: 2022/04/26 05:01:20 by sakllam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../mini_shell.h"
+#include "../mini_shell.h"
 
-int	ft_pwd(void)
+void	ft_normingit(int *spaces, char **line, int *i)
 {
-	char	pwd[PATH_MAX];
-
-	getcwd(pwd, PATH_MAX);
-	write(1, pwd, ft_strlen(pwd));
-	write(1, "\n", 1);
-	return (0);
+	*spaces = 0;
+	ft_whiterun(line);
+	*i = 0;
 }

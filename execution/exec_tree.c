@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 02:09:42 by sakllam           #+#    #+#             */
-/*   Updated: 2022/04/26 01:35:05 by foulare          ###   ########.fr       */
+/*   Updated: 2022/04/26 05:06:58 by sakllam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int	ft_getreturn(pid_t id)
 	int	ret;
 
 	waitpid(id, &ret, 0);
+	g_exec.child = 1;
 	return (ret);
 }
 

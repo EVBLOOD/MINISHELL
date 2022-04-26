@@ -1,13 +1,13 @@
 /* ************************************************************************** */
-/*																			  */
-/*														  :::	   ::::::::   */
-/*	 unset.c											:+:		 :+:	:+:   */
-/*													  +:+ +:+		  +:+	  */
-/*	 By: sakllam <sakllam@student.42.fr>			+#+  +:+	   +#+		  */
-/*												  +#+#+#+#+#+	+#+			  */
-/*	 Created: 2022/04/25 15:58:20 by sakllam		   #+#	  #+#			  */
-/*	 Updated: 2022/04/26 00:47:12 by foulare		  ###	########.fr		  */
-/*																			  */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   unset.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/26 04:53:25 by sakllam           #+#    #+#             */
+/*   Updated: 2022/04/26 04:54:53 by sakllam          ###   ########.fr       */
+/*                                                                            */
 /* ************************************************************************** */
 
 #include "../../mini_shell.h"
@@ -23,10 +23,8 @@ char	**deleteit(char *var, char ***env)
 	while ((*env)[i])
 		i++;
 	tmp = malloc(sizeof(char *) * (i + 1));
-	if (!tmp)
-		return (NULL);
 	i = 0;
-	while ((*env)[i])
+	while ((*env)[i] && tmp)
 	{
 		if (ft_strncmp(var, (*env)[i], ft_strlen(var))
 			&& (*env)[i][ft_strlen(var)] != '=')

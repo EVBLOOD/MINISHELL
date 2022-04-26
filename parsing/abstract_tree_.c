@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 01:21:05 by sakllam           #+#    #+#             */
-/*   Updated: 2022/04/26 04:20:07 by foulare          ###   ########.fr       */
+/*   Updated: 2022/04/26 05:25:15 by sakllam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ t_list	**ft_nextalpha(t_list **list, t_list *end)
 {
 	t_list	**redirection;
 
-	redirection = NULL;
+	redirection = ft_malloc(sizeof(t_list *));
 	(*redirection) = ft_firstredr(*list, end);
 	(*redirection) = (*redirection)->next;
 	while ((*redirection) != end && (*redirection)->type == SPACES)

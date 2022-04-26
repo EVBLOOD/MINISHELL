@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 00:45:31 by sakllam           #+#    #+#             */
-/*   Updated: 2022/04/26 02:45:25 by foulare          ###   ########.fr       */
+/*   Updated: 2022/04/26 05:04:39 by sakllam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ typedef struct s_globale
 {
 	int		returnvalue;
 	int		isexecuting;
+	int		child;
 	t_trush	*trush;
 }	t_globale;
 
@@ -295,4 +296,6 @@ int			ft_export(char **cmd, char ***env);
 int			desplayerror(char *cmd);
 char		*ft_dq_sq_wrdmerging(t_list *list, char **str, int *wild);
 void		display(char **env);
+void		ft_cleanexport(int line, char ***env, char *cmd);
+void		ft_normingit(int *spaces, char **line, int *i);
 #endif

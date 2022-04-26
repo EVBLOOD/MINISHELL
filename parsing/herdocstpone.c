@@ -1,13 +1,13 @@
 /* ************************************************************************** */
-/*																			  */
-/*														  :::	   ::::::::   */
-/*	 herdocstpone.c										:+:		 :+:	:+:   */
-/*													  +:+ +:+		  +:+	  */
-/*	 By: sakllam <sakllam@student.42.fr>			+#+  +:+	   +#+		  */
-/*												  +#+#+#+#+#+	+#+			  */
-/*	 Created: 2022/04/25 01:08:11 by sakllam		   #+#	  #+#			  */
-/*	 Updated: 2022/04/25 01:09:48 by sakllam		  ###	########.fr		  */
-/*																			  */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   herdocstpone.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/26 04:57:38 by sakllam           #+#    #+#             */
+/*   Updated: 2022/04/26 05:13:39 by sakllam          ###   ########.fr       */
+/*                                                                            */
 /* ************************************************************************** */
 
 #include "../mini_shell.h"
@@ -57,7 +57,7 @@ char	*ft_herdoc(char **name)
 	while (1)
 	{
 		line = readline (">> ");
-		if (!line || !ft_strcmp(line, limiter))
+		if (!line || !*line || !ft_strcmp(line, limiter))
 			break ;
 		write(fd, line, ft_strlen(line));
 		write(fd, "\n", 1);

@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 00:56:44 by sakllam           #+#    #+#             */
-/*   Updated: 2022/04/26 04:27:05 by foulare          ###   ########.fr       */
+/*   Updated: 2022/04/26 05:00:30 by sakllam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,9 +105,7 @@ t_list	*ft_lexicalanalysis(char *line)
 	int		spaces;
 
 	head = NULL;
-	spaces = 0;
-	ft_whiterun(&line);
-	i = 0;
+	ft_normingit(&spaces, &line, &i);
 	while (*line)
 	{
 		spaces = ft_whiterun(&line);
