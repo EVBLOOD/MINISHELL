@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 02:38:11 by sakllam           #+#    #+#             */
-/*   Updated: 2022/04/26 05:06:01 by sakllam          ###   ########.fr       */
+/*   Updated: 2022/04/28 02:50:30 by sakllam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,13 @@ t_globale	g_exec;
 
 void	handle(int sig)
 {
-	if (sig == SIGINT && g_exec.child)
+	if (sig == SIGINT && !g_exec.isexecuting)
 	{
 		write(1, "\n", 1);
-		if (g_exec.isexecuting)
-			return ;
 		rl_replace_line("", 0);
 		rl_on_new_line();
 		rl_redisplay();
 		g_exec.returnvalue = 1;
-		g_exec.child = 1;
 	}
 }
 
@@ -57,7 +54,7 @@ void	start(char ***newenv, int *io, char **env)
 	save_io(io);
 	g_exec.trush = NULL;
 	g_exec.returnvalue = 0;
-	g_exec.child = 1;
+	g_exec.inpipe = 1;
 }
 
 int	main(int argc, char *argv[], char *env[])
@@ -86,5 +83,4 @@ int	main(int argc, char *argv[], char *env[])
 		free(line);
 	}
 	free(newenv);
-	return (0);
 }

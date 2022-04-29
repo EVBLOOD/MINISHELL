@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 04:44:29 by sakllam           #+#    #+#             */
-/*   Updated: 2022/04/26 04:52:23 by sakllam          ###   ########.fr       */
+/*   Updated: 2022/04/29 00:28:20 by sakllam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,6 @@ int	verifyname(char *name)
 			return (-1);
 		i++;
 	}
-	if (name[i] != '=')
-		return (-2);
 	return (i);
 }
 

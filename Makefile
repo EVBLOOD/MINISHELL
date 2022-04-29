@@ -6,7 +6,7 @@
 #    By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/25 17:14:37 by sakllam           #+#    #+#              #
-#    Updated: 2022/04/26 05:14:09 by sakllam          ###   ########.fr        #
+#    Updated: 2022/04/28 22:45:26 by sakllam          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,10 +26,10 @@ SRCS= 	execution/exec_tree.c        parsing/abstract_tree___.c   parsing/lexer__
   		execution/execution_utils/before_func.c   execution/execution_utils/variablesexp.c \
 		execution/builtin/unset.c    execution/execution_utils/doubleexp.c     execution/execution_utils/variablesexp_.c \
 		execution/builtin/wild.c      execution/execution_utils/doubleexp_.c execution/builtin/display_export.c\
-		execution/execution_utils/exec_utils.c \
+		execution/execution_utils/exec_utils.c	execution/builtin/exit_.c \
 		main.c    parsing/nomore.c  execution/builtin/extra_norm.c      main_utils.c trush.c\
 
-CFLAGS := -g -Wall -Wextra -Werror
+CFLAGS := -Wall -Wextra -Werror
 LFLAGS := -L/goinfre/sakllam/.brew/opt/readline/lib
 IFLAGS := -I/goinfre/sakllam/.brew/opt/readline/include
 
@@ -40,10 +40,10 @@ OBJS :=$(SRCS:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	gcc $(CFLAGS) $^ -o $@ $(FLAGS) -lreadline -lncurses $(LFLAGS)
+	cc $(CFLAGS) $^ -o $@ $(FLAGS) -lreadline -lncurses $(LFLAGS)
 
 %.o: %.c mini_shell.h 
-	gcc $(CFLAGS) $(IFLAGS) -c $< -o $@
+	cc $(CFLAGS) $(IFLAGS) -c $< -o $@
 
 clean:
 	rm -f $(OBJS)

@@ -6,15 +6,41 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:54:21 by sakllam           #+#    #+#             */
-/*   Updated: 2022/04/26 04:08:29 by foulare          ###   ########.fr       */
+/*   Updated: 2022/04/28 23:41:23 by sakllam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../mini_shell.h"
 
+void	exiterror(const char *command)
+{
+	write (1, "bash: exit: ", 12);
+	write (1, command, ft_strlen(command));
+	write (1, ": numeric argument required\n", 28);
+	exit (255);
+}
+
 int	isnum(char c)
 {
 	return (c >= '0' && c <= '9');
+}
+
+long long	ft_atoibody(int i, const char *str, int sgn)
+{
+	long long			result;
+	long long			latest;
+
+	result = 0;
+	latest = 0;
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		result = result * 10 + str[i] - '0';
+		if (latest > result)
+			exiterror(str);
+		latest = result;
+		i++;
+	}
+	return (result * sgn);
 }
 
 long long	ft_atoi_long(const char *str)
@@ -35,48 +61,28 @@ long long	ft_atoi_long(const char *str)
 	}
 	else if (str[i] == '+')
 		i++;
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		result = result * 10 + str[i] - '0';
-		i++;
-	}
-	return (result * n);
+	return (ft_atoibody(i, str, n));
 }
 
 int	check_error_exit(char **command)
 {
-	int	i;
+	int			i;
+	long long	exiting;
+	int			nbfound;
 
-	i = -1;
-	while (command[0][++i])
-	{
-		if ((command[0][0] == '-' || command[0][0] == '+'))
-			i++;
-		if (!isnum(command[0][i]) ||
-			ft_atoi_long(command[0]) > 9223372036854775807
-			|| ft_atoi_long(command[0]) < (-922337203685477580 - 1))
-		{
-			write (1, "bash: exit: ", 12);
-			write (1, command[0], ft_strlen(command[0]));
-			write (1, ": numeric argument required\n", 28);
-			exit (255);
-		}
-	}
+	i = 0;
+	nbfound = 1;
+	if (!command[0][i])
+		exiterror(command[0]);
+	if (ft_checkexitspaces(command[0]))
+		exiterror(command[0]);
+	exiting = ft_atoi_long(command[0]);
 	if (command[1])
 	{
 		write(1, "bash: exit: too many arguments\n", 31);
-		return (0);
+		return (1);
 	}
-	return (1);
-}
-
-int	ft_exit(char **command)
-{
-	write(0, "exit\n", 6);
-	if (!command[0])
-		exit (g_exec.returnvalue);
-	if (!check_error_exit(command))
-		return (0);
-	exit (ft_atoi_long(command[0]));
+	else
+		exit(exiting);
 	return (1);
 }

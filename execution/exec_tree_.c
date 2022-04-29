@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 02:11:38 by sakllam           #+#    #+#             */
-/*   Updated: 2022/04/26 05:06:23 by sakllam          ###   ########.fr       */
+/*   Updated: 2022/04/28 23:15:14 by sakllam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,9 @@ int	sobuilt(char **command, char ***env)
 {
 	if (ft_isbuiltin(command[0]))
 	{
-		ft_executebuiledin(command, env);
+		g_exec.returnvalue = ft_executebuiledin(command, env);
 		return (1);
 	}
-	g_exec.child = 0;
 	return (0);
 }
 
@@ -30,7 +29,9 @@ void	soexecv(char *path, char **command, char **env)
 		write(2, "minishell: ", 11);
 		write(2, path, ft_strlen(path));
 		perror(" ");
-		exit(126);
+		if (!access(path, F_OK) && access(path, X_OK))
+			exit (126);
+		exit(127);
 	}
 }
 
@@ -53,7 +54,9 @@ int	ft_simplecmd(char ***env, t_tree *tree)
 	command = ft_dealwithlist(tree->elements, *env);
 	if (sobuilt(command, env))
 		return (1);
-	id = fork();
+	id = 0;
+	if (g_exec.inpipe)
+		id = fork();
 	if (id == 0)
 	{
 		sig_restore();

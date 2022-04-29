@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 01:34:50 by sakllam           #+#    #+#             */
-/*   Updated: 2022/04/26 02:16:48 by foulare          ###   ########.fr       */
+/*   Updated: 2022/04/28 22:13:20 by sakllam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ t_befexec	*ft_merging(t_list **list, char **env)
 	normesok(&i, &wild, env);
 	head = NULL;
 	str = ft_strdup("");
-	while (list[i] && (list[i]->type == SPACES || !list[i]->sqp))
+	while (list[i] && (list[i]->type == SPACES))
 		i++;
 	while (list[i])
 	{
@@ -70,15 +70,11 @@ char	**ft_dealwithlist(t_list **list, char **env)
 {
 	char		**converted;
 	t_befexec	*ret;
-	t_befexec	*tmp;
+	int			i;
 
+	i = 0;
 	ft_replaceall(list, env);
 	ret = ft_merging(list, env);
 	converted = ft_convertfromlisttochar(ret);
-	while (ret)
-	{
-		tmp = ret;
-		ret = ret->next;
-	}
 	return (converted);
 }

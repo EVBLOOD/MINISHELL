@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:56:26 by sakllam           #+#    #+#             */
-/*   Updated: 2022/04/26 04:44:09 by sakllam          ###   ########.fr       */
+/*   Updated: 2022/04/28 19:04:24 by sakllam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,11 @@ int	ft_env(char **env)
 		return (1);
 	while (env[i])
 	{
-		write (1, env[i], ft_strlen(env[i]));
-		write (1, "\n", 1);
+		if (ft_strchr('=', env[i]))
+		{
+			write (1, env[i], ft_strlen(env[i]));
+			write (1, "\n", 1);
+		}
 		i++;
 	}
 	return (0);

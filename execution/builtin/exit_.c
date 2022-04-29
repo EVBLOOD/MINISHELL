@@ -1,41 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exec_utils_.c                                      :+:      :+:    :+:   */
+/*   exit_.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/25 01:43:41 by sakllam           #+#    #+#             */
-/*   Updated: 2022/04/27 00:12:21 by sakllam          ###   ########.fr       */
+/*   Created: 2022/04/28 22:42:03 by sakllam           #+#    #+#             */
+/*   Updated: 2022/04/28 23:44:34 by sakllam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../mini_shell.h"
 
-char	*ft_match(char *splited, char *cmd)
+int	ft_exit(char **command)
 {
-	char	*path;
-
-	if (!*cmd)
-		return (NULL);
-	path = ft_alphajoin(cmd, splited);
-	if (ft_checkexistence(path) == 2)
-		return (path);
-	return (NULL);
+	write(0, "exit\n", 6);
+	if (!command[0])
+		exit (g_exec.returnvalue);
+	check_error_exit(command);
+	return (1);
 }
 
-char	*ft_searchandconcat(char **splited, char *cmd)
+int	ft_checkexitspaces(char *cmd)
 {
-	int		i;
-	char	*path;
+	int			i;
+	int			nbfound;
 
 	i = 0;
-	while (splited[i])
+	nbfound = 1;
+	while (cmd[i] && !ft_isspace(cmd[i]))
+		i++;
+	if (cmd[i] == '-' || cmd[i] == '+')
+		i++;
+	while (isnum(cmd[i]))
 	{
-		path = ft_match(splited[i], cmd);
-		if (path)
-			break ;
+		nbfound = 0;
 		i++;
 	}
-	return (path);
+	while (cmd[i] && !ft_isspace(cmd[i]))
+		i++;
+	if (cmd[i] || nbfound)
+		return (1);
+	return (0);
 }

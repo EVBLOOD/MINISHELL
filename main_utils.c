@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 02:40:23 by sakllam           #+#    #+#             */
-/*   Updated: 2022/04/26 04:10:13 by foulare          ###   ########.fr       */
+/*   Updated: 2022/04/27 23:10:53 by sakllam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,5 @@ void	cleartrush(void)
 		free(tmp);
 		tmp = NULL;
 	}
+	g_exec.trush = NULL;
 }

@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 01:30:51 by sakllam           #+#    #+#             */
-/*   Updated: 2022/04/26 02:11:32 by foulare          ###   ########.fr       */
+/*   Updated: 2022/04/28 22:14:35 by sakllam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	ft_replaceall(t_list **list, char **env)
 		i++;
 	while (list[i])
 	{
-		if (list[i]->type == VARIABLE && env)
+		if (list[i]->type == VARIABLE)
 			list[i]->expanded = ft_expandvariables(list[i], env);
 		if (list[i]->type == SQ)
 			list[i]->splited = ft_replaceexpand_sq(&(list[i]));

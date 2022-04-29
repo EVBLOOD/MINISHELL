@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 01:41:53 by sakllam           #+#    #+#             */
-/*   Updated: 2022/04/26 02:20:51 by foulare          ###   ########.fr       */
+/*   Updated: 2022/04/27 00:14:49 by sakllam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,8 @@ char	*ft_isacmd(char *cmd, char **env)
 
 int	ft_checkexistence(char *line)
 {
-	if (access(line, X_OK))
+	if (!access(line, X_OK) && !access(line, F_OK))
 		return (2);
-	if (access(line, F_OK))
-		return (1);
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 00:45:31 by sakllam           #+#    #+#             */
-/*   Updated: 2022/04/26 05:04:39 by sakllam          ###   ########.fr       */
+/*   Updated: 2022/04/28 23:41:51 by sakllam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ typedef struct s_globale
 {
 	int		returnvalue;
 	int		isexecuting;
-	int		child;
+	int		inpipe;
 	t_trush	*trush;
 }	t_globale;
 
@@ -95,7 +95,6 @@ char		*ft_strchr(int c, char *s);
 t_list		*ft_setword(char *line, int i);
 void		ft_addwords(char **line, int *i, t_list **head);
 void		ft_navigatewords(char **line, int *i);
-void		ft_notavar(char **line, t_list **head);
 void		ft_addsnglordbl(char **line, int *i, t_list **head);
 int			ft_qouting(char **line, t_list **node, char qoute);
 void		ft_navigatedoubles(char **line, int *i);
@@ -298,4 +297,5 @@ char		*ft_dq_sq_wrdmerging(t_list *list, char **str, int *wild);
 void		display(char **env);
 void		ft_cleanexport(int line, char ***env, char *cmd);
 void		ft_normingit(int *spaces, char **line, int *i);
+int			ft_checkexitspaces(char *cmd);
 #endif

@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 04:43:24 by sakllam           #+#    #+#             */
-/*   Updated: 2022/04/26 04:43:27 by sakllam          ###   ########.fr       */
+/*   Updated: 2022/04/28 23:49:12 by sakllam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,18 @@ char	**dupplic(char **env)
 	int		len;
 	int		i;
 
-	len = -1;
+	len = 0;
 	while (env[len])
 		len++;
 	str = ft_malloc(sizeof(char **) * len + 1);
 	if (!str)
 		return (0);
-	i = -1;
-	while (env[++i])
+	i = 0;
+	while (env[i])
+	{
 		str[i] = ft_strdup(env[i]);
+		i++;
+	}
 	str[i] = NULL;
 	return (str);
 }
@@ -66,5 +69,5 @@ void	display(char **env)
 	}
 	i = -1;
 	while (str[++i])
-		printf ("declare -x: %s\n", str[i]);
+		printf ("declare -x %s\n", str[i]);
 }

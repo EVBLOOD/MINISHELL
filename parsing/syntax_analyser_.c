@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 01:02:24 by sakllam           #+#    #+#             */
-/*   Updated: 2022/04/26 04:36:47 by foulare          ###   ########.fr       */
+/*   Updated: 2022/04/28 21:39:41 by sakllam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,24 +82,24 @@ int	ft_wildcard(t_list *lst)
 void	redirectioncond(t_list *lst, int *okey, int x)
 {
 	if (lst->type == RDIN)
-		if (x == -1 || (x != WILD && x != WORD && x != SQ
+		if (x == -1 || (x != WILD && x != VARIABLE && x != WORD && x != SQ
 				&& x != DQ))
 			*okey = 1;
 	if (lst->type == RDOUT)
-		if (x == -1 || (x != WILD && x != WORD && x != SQ
+		if (x == -1 || (x != WILD && x != VARIABLE && x != WORD && x != SQ
 				&& x != DQ))
 			*okey = 1;
 	if (lst->type == RDHER)
 	{
 		lst->herdocexp = 0;
-		if (x == -1 || (x != WILD && x != WORD && x != SQ
+		if (x == -1 || (x != WILD && x != VARIABLE && x != WORD && x != SQ
 				&& x != DQ))
 			*okey = 1;
 		else
 			ft_herdoccreating(&lst);
 	}
 	if (lst->type == RDAPP)
-		if (x == -1 || (x != WILD && x != WORD && x != SQ
+		if (x == -1 || (x != WILD && x != VARIABLE && x != WORD && x != SQ
 				&& x != DQ))
 			*okey = 1;
 }

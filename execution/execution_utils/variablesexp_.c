@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 01:55:02 by sakllam           #+#    #+#             */
-/*   Updated: 2022/04/26 02:23:15 by foulare          ###   ########.fr       */
+/*   Updated: 2022/04/26 23:52:43 by sakllam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ char	*ft_cmdpathfound(char **env, t_list *list, int *found, int *i)
 	char	*var;
 
 	var = NULL;
-	while (env && env[*i])
+	while (env[*i])
 	{
 		var = &list->splited[1];
 		if (!ft_strncmp(env[*i], var, ft_strlen(var))

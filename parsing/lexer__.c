@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 00:54:47 by sakllam           #+#    #+#             */
-/*   Updated: 2022/04/26 04:26:03 by foulare          ###   ########.fr       */
+/*   Updated: 2022/04/28 22:07:14 by sakllam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,20 +22,6 @@ void	ft_navigatewords(char **line, int *i)
 	}
 }
 
-void	ft_notavar(char **line, t_list **head)
-{
-	int	x;
-
-	x = 0;
-	ft_whiterun(line);
-	while (**line && !ft_strchr(**line, "&|><*()\"\'") && ft_isspace(**line))
-	{
-		x++;
-		(*line)++;
-	}
-	ft_addwords(line, &x, head);
-}
-
 void	ft_addsnglordbl(char **line, int *i, t_list **head)
 {
 	t_list	*node;
@@ -48,9 +34,6 @@ void	ft_addsnglordbl(char **line, int *i, t_list **head)
 		node->type = check_type_one(*(*line - 1), *i);
 		node->next = NULL;
 		ft_lstadd_back(head, node);
-		if (node->type == RDHER || node->type == RDIN
-			|| node->type == RDOUT || node->type == RDAPP)
-			ft_notavar(line, head);
 		*i = 0;
 	}
 }

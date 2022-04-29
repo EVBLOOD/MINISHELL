@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:55:05 by sakllam           #+#    #+#             */
-/*   Updated: 2022/04/26 03:26:29 by foulare          ###   ########.fr       */
+/*   Updated: 2022/04/28 20:49:41 by sakllam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,11 +111,9 @@ int	ft_cd(char *dest, char **env)
 		}
 		return (cding(env));
 	}
-	if (chdir (dest) == -1 && errno == ENOENT)
+	if (chdir (dest) == -1)
 	{
-		write (1, "cd: ", 5);
-		write (1, dest, ft_strlen(dest));
-		write(1, ": No such file or directory\n", 28);
+		perror("minishell");
 		return (1);
 	}
 	return (cding(env));

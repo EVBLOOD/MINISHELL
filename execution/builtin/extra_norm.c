@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 04:52:01 by sakllam           #+#    #+#             */
-/*   Updated: 2022/04/26 04:56:31 by sakllam          ###   ########.fr       */
+/*   Updated: 2022/04/29 00:30:05 by sakllam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void	ft_cleanexport(int line, char ***env, char *cmd)
 	if (line != -1)
 	{
 		tmp = (*env)[line];
+		if (!ft_strchr('=', cmd))
+			return ;
 		(*env)[line] = ft_strdupb(cmd);
 		free(tmp);
 	}

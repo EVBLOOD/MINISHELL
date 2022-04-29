@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 01:38:22 by sakllam           #+#    #+#             */
-/*   Updated: 2022/04/26 02:09:42 by foulare          ###   ########.fr       */
+/*   Updated: 2022/04/26 23:53:25 by sakllam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	ft_expandvariablesdq(char **var, char **env)
 		*var = ft_strdup(ft_itoa(g_exec.returnvalue));
 		return ;
 	}
-	while (env && env[++i])
+	while (env[++i])
 	{
 		if (!ft_strncmp(env[i], *var, ft_strlen(*var))
 			&& env[i][ft_strlen(*var)] == '=')

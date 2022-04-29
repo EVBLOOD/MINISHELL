@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 02:09:42 by sakllam           #+#    #+#             */
-/*   Updated: 2022/04/26 05:06:58 by sakllam          ###   ########.fr       */
+/*   Updated: 2022/04/29 00:07:44 by sakllam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ int	ft_getreturn(pid_t id)
 	int	ret;
 
 	waitpid(id, &ret, 0);
-	g_exec.child = 1;
 	return (ret);
 }
 
@@ -27,6 +26,8 @@ int	ft_statushundling(int status)
 	{
 		if (WTERMSIG(status) == 3)
 			write(2, "Quit: 3\n", 8);
+		if (WTERMSIG(status) == 2)
+			write(2, "\n", 1);
 		return (128 + WTERMSIG(status));
 	}
 	else if (WIFEXITED(status))
@@ -64,7 +65,7 @@ int	ft_executebuiledin(char **command, char ***env)
 	if (!ft_strcmp(command[0], "cd"))
 		return (ft_cd(command[1], *env));
 	if (!ft_strcmp(command[0], "unset"))
-		return (ft_unset(env, command));
+		return (ft_unset(env, &command[1]));
 	if (!ft_strcmp(command[0], "exit"))
 		return (ft_exit(&command[1]));
 	if (!ft_strcmp(command[0], "export"))

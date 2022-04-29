@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 04:53:25 by sakllam           #+#    #+#             */
-/*   Updated: 2022/04/26 04:54:53 by sakllam          ###   ########.fr       */
+/*   Updated: 2022/04/29 00:21:54 by sakllam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,11 @@ char	**deleteit(char *var, char ***env)
 		i++;
 	tmp = malloc(sizeof(char *) * (i + 1));
 	i = 0;
-	while ((*env)[i] && tmp)
+	while ((*env)[i])
 	{
 		if (ft_strncmp(var, (*env)[i], ft_strlen(var))
-			&& (*env)[i][ft_strlen(var)] != '=')
+			|| (!ft_strncmp(var, (*env)[i], ft_strlen(var)) &&
+			((*env)[i][ft_strlen(var)] && (*env)[i][ft_strlen(var)] != '=')))
 		{
 			tmp[j] = ft_strdupb((*env)[i]);
 			j++;
@@ -36,7 +37,7 @@ char	**deleteit(char *var, char ***env)
 		i++;
 	}
 	free(*env);
-	tmp[i] = NULL;
+	tmp[j] = NULL;
 	return (tmp);
 }
 

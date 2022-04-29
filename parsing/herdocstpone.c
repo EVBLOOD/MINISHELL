@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 04:57:38 by sakllam           #+#    #+#             */
-/*   Updated: 2022/04/26 05:13:39 by sakllam          ###   ########.fr       */
+/*   Updated: 2022/04/28 22:05:34 by sakllam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ char	*ft_herdoc(char **name)
 	while (1)
 	{
 		line = readline (">> ");
-		if (!line || !*line || !ft_strcmp(line, limiter))
+		if (!line || !ft_strcmp(line, limiter))
 			break ;
 		write(fd, line, ft_strlen(line));
 		write(fd, "\n", 1);
@@ -100,7 +100,8 @@ int	ft_herdocexptype(t_list **lst, t_list *tmp, char **join)
 			return (1);
 		tmp->herdocexp = 1;
 	}
-	if ((*lst)->type == WILD || (*lst)->type == WORD)
+	if ((*lst)->type == WILD || (*lst)->type == WORD
+		|| (*lst)->type == VARIABLE)
 		(*join) = (*lst)->splited;
 	(*lst)->sqp = 0;
 	return (0);
