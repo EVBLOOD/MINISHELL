@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer__.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
+/*   By: saad <saad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 00:54:47 by sakllam           #+#    #+#             */
-/*   Updated: 2022/04/28 22:07:14 by sakllam          ###   ########.fr       */
+/*   Updated: 2022/04/30 18:19:49 by saad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,8 @@ void	ft_addsnglordbl(char **line, int *i, t_list **head)
 int	ft_qouting(char **line, t_list **node, char qoute)
 {
 	int	i;
-	int	j;
 
 	i = 1;
-	j = 0;
 	while ((*line)[i] && (*line)[i] != qoute)
 		i++;
 	(*node)->splited = ft_malloc(i + 2);

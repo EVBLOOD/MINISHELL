@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   before_exec.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
+/*   By: saad <saad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 01:30:51 by sakllam           #+#    #+#             */
-/*   Updated: 2022/04/28 22:14:35 by sakllam          ###   ########.fr       */
+/*   Updated: 2022/04/30 18:25:28 by saad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,6 @@ t_befexec	*ft_createnode(char *str)
 
 char	*ft_replaceexpand_dq(t_list **list, char **env)
 {
-	char	*tmp;
-
-	tmp = (*list)->splited;
 	(*list)->splited = ft_expand_dq(*list, env);
 	return ((*list)->splited);
 }
@@ -60,7 +57,6 @@ char	*ft_replaceexpand_sq(t_list **list)
 void	ft_replaceall(t_list **list, char **env)
 {
 	int		i;
-	char	*str;
 
 	i = 0;
 	while (list[i] && (list[i]->type == SPACES || !list[i]->sqp))
@@ -74,10 +70,7 @@ void	ft_replaceall(t_list **list, char **env)
 		if (list[i]->type == DQ)
 			list[i]->splited = ft_replaceexpand_dq(&(list[i]), env);
 		if (list[i]->type == WORD)
-		{
-			str = list[i]->splited;
 			list[i]->splited = ft_strdup(list[i]->splited);
-		}
 		i++;
 	}
 }

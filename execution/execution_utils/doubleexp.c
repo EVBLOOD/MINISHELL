@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   doubleexp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
+/*   By: saad <saad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 01:38:22 by sakllam           #+#    #+#             */
-/*   Updated: 2022/04/26 23:53:25 by sakllam          ###   ########.fr       */
+/*   Updated: 2022/04/30 18:28:20 by saad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,9 @@ void	ft_expandvariablesdq(char **var, char **env)
 {
 	int		i;
 	int		found;
-	char	*tmp;
 
 	i = -1;
 	found = 0;
-	tmp = *var;
 	if (!ft_strcmp(*var, "?"))
 	{
 		*var = ft_strdup(ft_itoa(g_exec.returnvalue));

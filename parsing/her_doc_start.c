@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   her_doc_start.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
+/*   By: saad <saad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 01:10:12 by sakllam           #+#    #+#             */
-/*   Updated: 2022/04/28 22:05:44 by sakllam          ###   ########.fr       */
+/*   Updated: 2022/04/30 18:21:11 by saad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	ft_herdoccreating(t_list **lst)
 {
-	char	*x;
 	char	*lem;
 	char	*join;
 	t_list	*tmp;
@@ -30,7 +29,6 @@ int	ft_herdoccreating(t_list **lst)
 	{
 		if (ft_herdocexptype(lst, tmp, &join))
 			return (0);
-		x = lem;
 		lem = ft_strjoin(lem, join);
 		*lst = (*lst)->next;
 	}

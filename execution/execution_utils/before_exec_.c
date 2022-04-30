@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   before_exec_.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
+/*   By: saad <saad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 01:32:52 by sakllam           #+#    #+#             */
-/*   Updated: 2022/04/26 02:12:17 by foulare          ###   ########.fr       */
+/*   Updated: 2022/04/30 18:27:11 by saad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,6 @@ char	**ft_convertfromlisttochar(t_befexec *list)
 
 char	*ft_replaceandjoin(char **str, char *tojoin)
 {
-	char	*tmp;
-
-	tmp = *str;
 	*str = ft_strjoin(*str, tojoin);
 	return (*str);
 }

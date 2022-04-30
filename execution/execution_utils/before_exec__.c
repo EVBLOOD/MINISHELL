@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   before_exec__.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
+/*   By: saad <saad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 01:34:50 by sakllam           #+#    #+#             */
-/*   Updated: 2022/04/28 22:13:20 by sakllam          ###   ########.fr       */
+/*   Updated: 2022/04/30 18:27:37 by saad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,7 @@ char	**ft_dealwithlist(t_list **list, char **env)
 {
 	char		**converted;
 	t_befexec	*ret;
-	int			i;
 
-	i = 0;
 	ft_replaceall(list, env);
 	ret = ft_merging(list, env);
 	converted = ft_convertfromlisttochar(ret);

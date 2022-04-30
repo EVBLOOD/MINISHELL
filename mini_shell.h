@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_shell.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
+/*   By: saad <saad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 00:45:31 by sakllam           #+#    #+#             */
-/*   Updated: 2022/04/28 23:41:51 by sakllam          ###   ########.fr       */
+/*   Updated: 2022/04/30 18:22:04 by saad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,10 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <dirent.h>
-# include "readline/readline.h"
-# include "readline/history.h"
+# include <readline/readline.h>
+# include <readline/history.h>
+# include <sys/types.h>
+# include <sys/wait.h>
 # include <curses.h>
 # include <term.h>
 # include <limits.h>
