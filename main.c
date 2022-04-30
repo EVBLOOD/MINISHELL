@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
+/*   By: saad <saad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 02:38:11 by sakllam           #+#    #+#             */
-/*   Updated: 2022/04/28 02:50:30 by sakllam          ###   ########.fr       */
+/*   Updated: 2022/04/30 17:49:40 by saad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,6 @@ int	main(int argc, char *argv[], char *env[])
 			itsnull(newenv);
 		if (line[0] != '\0')
 			ft_thegreatbash(line, tree, &newenv);
-		else
-			g_exec.returnvalue = 0;
 		reset_io(io);
 		free(line);
 	}
