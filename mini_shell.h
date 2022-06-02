@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 00:45:31 by sakllam           #+#    #+#             */
-/*   Updated: 2022/06/02 20:12:54 by sakllam          ###   ########.fr       */
+/*   Updated: 2022/06/02 20:14:10 by sakllam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ typedef struct s_globale
 	t_trush	*trush;
 }	t_globale;
 
+t_globale	g_exec;
 typedef struct s_list
 {
 	char			*splited;
