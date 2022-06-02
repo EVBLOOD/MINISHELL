@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: saad <saad@student.42.fr>                  +#+  +:+       +#+         #
+#    By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/25 17:14:37 by sakllam           #+#    #+#              #
-#    Updated: 2022/04/30 18:30:46 by saad             ###   ########.fr        #
+#    Updated: 2022/06/02 20:12:16 by sakllam          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,8 +30,8 @@ SRCS= 	execution/exec_tree.c        parsing/abstract_tree___.c   parsing/lexer__
 		main.c    parsing/nomore.c  execution/builtin/extra_norm.c      main_utils.c trush.c\
 
 CFLAGS := -Wall -Wextra -Werror
-LFLAGS := -L/goinfre/sakllam/.brew/opt/readline/lib
-IFLAGS := -I/goinfre/sakllam/.brew/opt/readline/include
+LFLAGS := -L/goinfre/$(USER)/.brew/opt/readline/lib
+IFLAGS := -I/goinfre/$(USER)/.brew/opt/readline/include
 
 OBJS :=$(SRCS:.c=.o)
 
